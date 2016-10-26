@@ -1,0 +1,125 @@
+﻿@model IEnumerable<VerifyCRM.Models.TodayRunView>
+
+@{
+    ViewBag.Title = "Current Run";
+
+    
+
+    var isRunning = Model.Where(x => x.statusCode < 3).Count() > 1;
+
+
+    var notStarted = Model.Where(x => x.statusCode > 1).Count() == 0;
+    
+    
+    
+    var startedOn = Model.Min(x => x.StartedOn);
+    var completedOn = Model.Max(x => x.CompletedOn);
+
+
+    TimeSpan? RunningTime = (isRunning ? DateTime.Now : completedOn) - startedOn;
+
+
+    //var hours = RunningTime.Value.TotalHours;
+
+    double totalmins = 0D;
+    int hours = 0;
+    int mins = 0;
+    if(RunningTime.HasValue)
+    {
+        totalmins = RunningTime.Value.TotalMinutes;
+        hours = (int)(totalmins / 60);
+        mins = (int)totalmins % 60;
+    
+    }
+    
+    
+    
+}
+
+<h2>Current Run</h2>
+
+<p>
+    @if (notStarted)
+    {
+        @:Status : <span class="label label-default"> Not Started </span>&nbsp;&nbsp;
+    }
+    else
+    {
+    @:Status : <span class="label label-@(isRunning?"warning":"success")"> @(isRunning ? "Running" : "Completed")</span>&nbsp;&nbsp;
+    @:Running Time :  <span class="label label-info">@hours:@mins:00</span>
+    }
+    
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.package_name)
+            
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.Errors)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="@Url.Action("PackageRun", new { id = item.levelIdInt })">@Html.DisplayFor(modelItem => item.package_name)</a>
+        </td>
+       
+        <td>
+            @if(item.statusCode==2)
+            {
+                @Html.DisplayFor(modelItem => item.DurationToNow)
+
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.Duration)
+            }
+
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompletedOn)
+        </td>
+
+        <td>
+            <span class="label label-@(item.StatusLabel)">
+                @Html.DisplayFor(modelItem => item._Status)
+            </span>
+        </td>
+
+        <td>
+            @if (item.Errors > 0)
+            {
+                <a href="@Url.Action("PackageError", new { id = item.levelIdInt, start = item.StartedOn, end = item.CompletedOn })">
+                    <span class="label label-danger">@Html.DisplayFor(modelItem => item.Errors)</span>
+                </a>
+            }
+
+        </td>
+        
+    </tr>
+}
+
+</table>

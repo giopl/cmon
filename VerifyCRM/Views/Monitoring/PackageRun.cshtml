@@ -1,0 +1,146 @@
+﻿@model IEnumerable<VerifyCRM.Models.MonitoringView>
+
+@{
+    ViewBag.Title = "Package Run";
+
+    var package = Model.FirstOrDefault();
+}
+
+<h2>Package Run: <b>@package.LevelName</b></h2>
+
+<p>
+    <div id="container"></div>
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            Rundate
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>Row Count</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Errors)
+            
+        </th>
+        
+        
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(x=>x.StartedOn)) {
+    <tr>
+        
+        <td>
+            
+            @item.StartedOn.Value.ToString("ddd dd-MMM-yy")
+
+        </td>
+        <td>
+            @if (item.statusCode == 2)
+            {
+                @item.DurationToNow
+
+            }
+            else
+            {
+            @Html.DisplayFor(modelItem => item.Duration)
+            }
+
+            
+        </td>
+        <td>
+            @item.StartedOn.Value.ToString("HH:mm:ss")
+        </td>
+        <td>
+            @if(item.CompletedOn.HasValue)
+            {
+                @item.CompletedOn.Value.ToString("HH:mm:ss")
+            }
+            
+            
+        </td>
+        <td>
+
+            @if (!item.CompletedOn.HasValue && item.StartedOn < DateTime.Now.Date)
+            {
+                <span class="label label-default">8 - Incomplete</span>
+            }
+            else
+            {
+                <span class="label label-@(item.StatusLabel)">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </span>
+            }
+            
+        </td>
+        <td>@item.RecordCount</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Errors)
+        </td>
+        
+    </tr>
+}
+
+</table>
+
+
+<table id="datatable" style="display:none">
+    <thead>
+        <tr>
+            <td>date</td>
+            <td>duration</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Where(x=>x.seconds > 0).OrderBy(x=>x.StartedOn))
+        {
+            <tr>
+                <td>@item.StartedOn.Value.ToString("dd-MMM-yy")</td>
+                <td>@item.seconds</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts {
+    <script>
+
+        $(function () {
+            $('#container').highcharts({
+                data: {
+                    table: 'datatable'
+                },
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Daily Runtime'
+                },
+                yAxis: {
+                    allowDecimals: false,
+                    title: {
+                        text: 'Seconds'
+                    }
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + 'seconds ' + this.point.name.toLowerCase();
+                    }
+                }
+            });
+        });
+
+    </script>
+
+}

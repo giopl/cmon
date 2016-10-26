@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerifyCRM", "VerifyCRM\VerifyCRM.csproj", "{141038B4-AA92-4A64-A8AE-D163909AA3C9}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CmonitorDB", "CmonitorDB\CmonitorDB.sqlproj", "{CE854032-299B-46A2-81C1-3D25C2628BFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{11833199-B8F5-4B3C-B4CA-63E9B77656C5}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{141038B4-AA92-4A64-A8AE-D163909AA3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{141038B4-AA92-4A64-A8AE-D163909AA3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{141038B4-AA92-4A64-A8AE-D163909AA3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{141038B4-AA92-4A64-A8AE-D163909AA3C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE854032-299B-46A2-81C1-3D25C2628BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE854032-299B-46A2-81C1-3D25C2628BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE854032-299B-46A2-81C1-3D25C2628BFF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CE854032-299B-46A2-81C1-3D25C2628BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE854032-299B-46A2-81C1-3D25C2628BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE854032-299B-46A2-81C1-3D25C2628BFF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bb17af81537d468ead62114b8cd70900" Name="Diagram1">
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_column" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_table" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_user" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.SSISErrorTable" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.SSISErrorTableLog" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.AllCorporateAllServices" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_corporate_customer" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.Monitoring" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.MonitoringLog" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.restricted_code_bu_mapping" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.SSIS_Configurations" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_collateral" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_corporate_customer" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_credit_card" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_credit_card_account" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_current_savings" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_debit_card" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_fixed_deposit" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_joint_holders_connections" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_loans_loans" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_PluginSteps" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_product" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_retail_customer" Width="1.5" PointX="18.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_treasury" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_package" Width="1.5" PointX="5.375" PointY="20.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.RunHistoryView" Width="1.5" PointX="21.375" PointY="7.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.TodayRunView" Width="1.5" PointX="9.375" PointY="21.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.MonitoringView" Width="1.5" PointX="21.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

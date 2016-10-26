@@ -1,0 +1,91 @@
+﻿@model IEnumerable<VerifyCRM.Models.MonitoringView>
+
+@{
+    ViewBag.Title = "Last Run";
+
+    var isRunning = Model.Where(x => x.statusCode < 3).Count() > 1;
+    var startedOn = Model.Min(x => x.StartedOn);
+    var completedOn = Model.Max(x => x.CompletedOn);
+    
+    
+    TimeSpan? RunningTime = (isRunning?DateTime.Now:completedOn) - startedOn;
+   
+    
+    //var hours = RunningTime.Value.TotalHours;
+    var totalmins = RunningTime.Value.TotalMinutes;
+    int hours = (int)(totalmins / 60);
+    int mins = (int) totalmins % 60;
+    
+    
+}
+
+<h2>Last Run</h2>
+
+<p>
+
+
+    Status : <span class="label label-@(isRunning?"warning":"success")"> @(isRunning ? "Running" : "Completed")</span>&nbsp;&nbsp;
+    Running Time :  <span class="label label-info">@hours:@mins:00</span>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LevelName)
+        </th>
+        
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Errors)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="@Url.Action("PackageRun", new { id = item.LevelId })">@Html.DisplayFor(modelItem => item.LevelName)</a>
+        </td>
+        
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompletedOn)
+        </td>
+        <td>
+            <span class="label label-@(item.StatusLabel)">
+                @Html.DisplayFor(modelItem => item.Status)
+            </span>
+        </td>
+        <td>
+            @if(item.Errors>0)
+            {
+                <a href="@Url.Action("PackageError", new { id = item.LevelId, start = item.StartedOn, end = item.CompletedOn })">
+                    <span class="label label-danger">@Html.DisplayFor(modelItem => item.Errors)</span>                    
+                </a>
+            }
+
+
+
+        </td>
+        
+    </tr>
+}
+
+</table>

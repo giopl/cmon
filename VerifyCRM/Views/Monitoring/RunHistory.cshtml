@@ -1,0 +1,125 @@
+﻿@model IEnumerable<VerifyCRM.Models.RunHistoryView>
+@using utils = VerifyCRM.Helpers.Utils
+@{
+    ViewBag.Title = "Run History";
+}
+
+<h2>Run History</h2>
+
+
+    <div id="container"></div>
+
+<table class="table">
+    <tr>
+        <th>
+            Rundate
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.started)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.completed)
+        </th>
+
+        <th>Duration</th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_errors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numRows)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(x=>x.rundate)) {
+    <tr>
+        <td>
+            <a href="@Url.Action("DateRun", new  { id = utils.ConvertDateToInt(item.rundate) })">
+                @item.rundate.ToString("ddd dd-MMM-yy")
+            </a>
+        </td>
+        <td>
+            @item.started.Value.ToString("HH:mm:ss")
+        </td>
+        <td>
+            @item.completed.Value.ToString("HH:mm:ss")
+        </td>
+        <td>
+
+            @Html.DisplayFor(modelItem => item.DurationStr)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.num_errors)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.numRows)
+        </td>
+        
+    </tr>
+}
+
+</table>
+
+
+
+<table id="datatable" style="display:none">
+    <thead>
+        <tr>
+            <th></th>
+            <td>runtime (mins)</td>
+            <td>rows (million)</td>
+            <td>errors (unit)</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(x=>x.rundate > DateTime.Now.AddDays(-31) ))
+        {
+            <tr>
+                <td>@item.rundate.ToString("ddMMMyy")</td>
+                <td>@(item.duration_seconds/60)</td>
+                <td>@(item.numRows/1000000)</td>
+                <td>@item.num_errors</td>
+
+            </tr>
+            
+        }
+        
+    </tbody>
+
+</table>
+
+@section scripts {
+    <script>
+
+        $(function () {
+            $('#container').highcharts({
+                data: {
+                    table: 'datatable'
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Daily Runtime'
+                },
+                yAxis: {
+                    allowDecimals: false,
+                    title: {
+                        text: 'Units'
+                    }
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                    }
+                }
+            });
+        });
+
+    </script>
+
+}

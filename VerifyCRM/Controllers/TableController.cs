@@ -17,7 +17,7 @@ namespace VerifyCRM.Controllers
         // GET: Table
         public ActionResult Index()
         {
-            return View(db.app_table.ToList());
+            return RedirectToAction("ShowTables");
         }
 
         public ActionResult ShowTables()
@@ -123,6 +123,43 @@ namespace VerifyCRM.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        #region column
+        // GET: app_column/Edit/5
+        public ActionResult EditColumn(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            app_column app_column = db.app_column.Find(id);
+            if (app_column == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.table_id = new SelectList(db.app_table, "id", "tab_schema", app_column.table_id);
+            return View(app_column);
+        }
+
+        // POST: app_column/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditColumn([Bind(Include = "id,table_id,tab_schema,tab_name,col_name,col_type,col_length,is_nullable,ordinal_position,description,updated_on")] app_column app_column)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(app_column).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.table_id = new SelectList(db.app_table, "id", "tab_schema", app_column.table_id);
+            return View(app_column);
+        }
+
+        #endregion
+
 
         protected override void Dispose(bool disposing)
         {

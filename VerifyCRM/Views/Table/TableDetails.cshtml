@@ -1,48 +1,18 @@
 ﻿@model VerifyCRM.Models.app_table
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Table Details";
 }
 
-<h2>Details</h2>
+<h2>Table Details</h2>
 
 <div>
-    <h4>app_table</h4>
+    <h4 class="text-primary">@Model.fulltablename</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.tab_schema)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tab_schema)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.updated_on)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.updated_on)
-        </dd>
-
-    </dl>
+    <div class="text-muted ">
+        @Html.DisplayFor(model => model.description)
+    </div>
+    
 </div>
 
 
@@ -51,13 +21,26 @@
         <tr>
             <th>col name</th>
             <th>col type</th>
-            <th>length</th>
+            
             <th>nullable</th>
             <th>description</th>                    
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        
+        @foreach(var col in Model.app_column)
+        {
+            <tr>
+                <td>@col.col_name</td>
+                <td>@col.col_type @(col.col_length.HasValue?"["+col.col_length+"]":"")</td>
+                
+                <td>@col.is_nullable</td>
+                <td>@col.description</td>
+
+                <td><a href="@Url.Action("EditColumn", new { id=col.id })"> <span class="fa fa-edit"></span></a></td>
+            </tr>
+            
+        }
     </tbody>
 
 

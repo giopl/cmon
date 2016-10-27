@@ -1,0 +1,56 @@
+﻿@model VerifyCRM.Models.app_package
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>app_package</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.level_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.level_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.package_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.package_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.package_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.package_type)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

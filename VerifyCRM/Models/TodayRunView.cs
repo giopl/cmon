@@ -14,7 +14,7 @@ namespace VerifyCRM.Models
     
     public partial class TodayRunView
     {
-        public int id { get; set; }
+        public long rowindex { get; set; }
         public decimal level_id { get; set; }
         public string package_name { get; set; }
         public Nullable<long> RecordCount { get; set; }

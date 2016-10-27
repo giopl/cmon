@@ -23,8 +23,8 @@ namespace VerifyCRM.Models
         public string errorcolumn { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
         public Nullable<decimal> levelid { get; set; }
+        public Nullable<int> id_row { get; set; }
         public long rowindex { get; set; }
         public string recorddata { get; set; }
-        public Nullable<int> id_row { get; set; }
     }
 }

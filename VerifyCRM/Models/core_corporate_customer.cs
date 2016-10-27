@@ -14,6 +14,8 @@ namespace VerifyCRM.Models
     
     public partial class core_corporate_customer
     {
+        public int id_row { get; set; }
+        public bool include_in_run { get; set; }
         public string cif { get; set; }
         public string county { get; set; }
         public string line_1 { get; set; }
@@ -93,7 +95,5 @@ namespace VerifyCRM.Models
         public Nullable<int> owneridtype { get; set; }
         public string currency { get; set; }
         public Nullable<int> access_restrict_type_code { get; set; }
-        public int id_row { get; set; }
-        public bool include_in_run { get; set; }
     }
 }

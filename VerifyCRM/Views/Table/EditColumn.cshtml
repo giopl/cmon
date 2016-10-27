@@ -1,0 +1,59 @@
+﻿@model VerifyCRM.Models.app_column
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Column Definition</h2>
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Library</a></li>
+    <li class="active">Data</li>
+</ol>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4><span class="text-primary"> @Model.col_name </span> for table <b>@Model.tab_schema -@Model.tab_name</b></h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+        @Html.HiddenFor(model => model.table_id)
+        @Html.HiddenFor(model => model.tab_schema)
+
+        @Html.HiddenFor(model => model.tab_name)
+        @Html.HiddenFor(model => model.col_name)
+        @Html.HiddenFor(model => model.col_type)
+        @Html.HiddenFor(model => model.col_length)
+        @Html.HiddenFor(model => model.is_nullable)
+        @Html.HiddenFor(model => model.ordinal_position)
+        @Html.HiddenFor(model => model.updated_on)
+
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.description, new { @class = "form-control"  })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

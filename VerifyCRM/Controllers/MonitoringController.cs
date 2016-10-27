@@ -55,7 +55,7 @@ namespace VerifyCRM.Controllers
 
         public ActionResult LastRun()
         {
-            return View(db.MonitoringView.Where(x=>x.IsLastRun && x.LevelId != 42 ).ToList());
+            return View(db.MonitoringView.Where(x=>x.IsLastRun == 1 && x.LevelId != 42 ).ToList());
         }
 
 
@@ -63,7 +63,7 @@ namespace VerifyCRM.Controllers
         {
 
             var dt = Utils.ConvertIntToDate(id);
-            return View(db.MonitoringView.Where(x => x.RunDate == dt && x.LevelId != 42M).ToList());
+            return View(db.MonitoringView.Where(x => x.RunDate == dt && x.LevelId != 42).ToList());
         }
 
 

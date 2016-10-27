@@ -26,38 +26,19 @@ namespace VerifyCRM.Models
         }
     
         public virtual DbSet<app_table> app_table { get; set; }
+        public virtual DbSet<app_column> app_column { get; set; }
+        public virtual DbSet<app_package> app_package { get; set; }
         public virtual DbSet<app_user> app_user { get; set; }
         public virtual DbSet<SSISErrorTable> SSISErrorTable { get; set; }
-        public virtual DbSet<SSISErrorTableLog> SSISErrorTableLog { get; set; }
-        public virtual DbSet<AllCorporateAllServices> AllCorporateAllServices { get; set; }
-        public virtual DbSet<core_corporate_customer> core_corporate_customer { get; set; }
         public virtual DbSet<Monitoring> Monitoring { get; set; }
         public virtual DbSet<MonitoringLog> MonitoringLog { get; set; }
-        public virtual DbSet<restricted_code_bu_mapping> restricted_code_bu_mapping { get; set; }
         public virtual DbSet<SSIS_Configurations> SSIS_Configurations { get; set; }
-        public virtual DbSet<vrp_collateral> vrp_collateral { get; set; }
-        public virtual DbSet<vrp_corporate_customer> vrp_corporate_customer { get; set; }
-        public virtual DbSet<vrp_credit_card> vrp_credit_card { get; set; }
-        public virtual DbSet<vrp_credit_card_account> vrp_credit_card_account { get; set; }
-        public virtual DbSet<vrp_current_savings> vrp_current_savings { get; set; }
-        public virtual DbSet<vrp_debit_card> vrp_debit_card { get; set; }
-        public virtual DbSet<vrp_fixed_deposit> vrp_fixed_deposit { get; set; }
-        public virtual DbSet<vrp_joint_holders_connections> vrp_joint_holders_connections { get; set; }
-        public virtual DbSet<vrp_loans_loans> vrp_loans_loans { get; set; }
-        public virtual DbSet<vrp_PluginSteps> vrp_PluginSteps { get; set; }
-        public virtual DbSet<vrp_product> vrp_product { get; set; }
-        public virtual DbSet<vrp_retail_customer> vrp_retail_customer { get; set; }
-        public virtual DbSet<vrp_treasury> vrp_treasury { get; set; }
-        public virtual DbSet<app_package> app_package { get; set; }
-        public virtual DbSet<RunHistoryView> RunHistoryView { get; set; }
-        public virtual DbSet<TodayRunView> TodayRunView { get; set; }
-        public virtual DbSet<MonitoringView> MonitoringView { get; set; }
-        public virtual DbSet<app_column> app_column { get; set; }
+        public virtual DbSet<core_city> core_city { get; set; }
+        public virtual DbSet<core_collateral> core_collateral { get; set; }
         public virtual DbSet<core_alert> core_alert { get; set; }
         public virtual DbSet<core_bank_assurance> core_bank_assurance { get; set; }
         public virtual DbSet<core_campaign_response> core_campaign_response { get; set; }
-        public virtual DbSet<core_city> core_city { get; set; }
-        public virtual DbSet<core_collateral> core_collateral { get; set; }
+        public virtual DbSet<core_corporate_customer> core_corporate_customer { get; set; }
         public virtual DbSet<core_corporate_group> core_corporate_group { get; set; }
         public virtual DbSet<core_corporate_segment> core_corporate_segment { get; set; }
         public virtual DbSet<core_credit_card> core_credit_card { get; set; }
@@ -86,30 +67,9 @@ namespace VerifyCRM.Models
         public virtual DbSet<core_shareholders> core_shareholders { get; set; }
         public virtual DbSet<core_trade_finance_products> core_trade_finance_products { get; set; }
         public virtual DbSet<core_treasury> core_treasury { get; set; }
-        public virtual DbSet<SSISErrorTable_Restore> SSISErrorTable_Restore { get; set; }
-        public virtual DbSet<vrp_alert> vrp_alert { get; set; }
-        public virtual DbSet<vrp_bank_assurance> vrp_bank_assurance { get; set; }
-        public virtual DbSet<vrp_campaign_response> vrp_campaign_response { get; set; }
-        public virtual DbSet<vrp_city> vrp_city { get; set; }
-        public virtual DbSet<vrp_co_borrower> vrp_co_borrower { get; set; }
-        public virtual DbSet<vrp_corporate_group> vrp_corporate_group { get; set; }
-        public virtual DbSet<vrp_corporate_segment> vrp_corporate_segment { get; set; }
-        public virtual DbSet<vrp_currency> vrp_currency { get; set; }
-        public virtual DbSet<vrp_customer_interaction> vrp_customer_interaction { get; set; }
-        public virtual DbSet<vrp_dependents> vrp_dependents { get; set; }
-        public virtual DbSet<vrp_enrolled_services_corporate> vrp_enrolled_services_corporate { get; set; }
-        public virtual DbSet<vrp_enrolled_services_retail> vrp_enrolled_services_retail { get; set; }
-        public virtual DbSet<vrp_enrolledservices_linkedaccts> vrp_enrolledservices_linkedaccts { get; set; }
-        public virtual DbSet<vrp_investment> vrp_investment { get; set; }
-        public virtual DbSet<vrp_joint_account> vrp_joint_account { get; set; }
-        public virtual DbSet<vrp_loan_guarantors> vrp_loan_guarantors { get; set; }
-        public virtual DbSet<vrp_outlet> vrp_outlet { get; set; }
-        public virtual DbSet<vrp_outlet_transactions_summary> vrp_outlet_transactions_summary { get; set; }
-        public virtual DbSet<vrp_pos_machines> vrp_pos_machines { get; set; }
-        public virtual DbSet<vrp_power_of_attorney> vrp_power_of_attorney { get; set; }
-        public virtual DbSet<vrp_retail_segment> vrp_retail_segment { get; set; }
-        public virtual DbSet<vrp_sectors> vrp_sectors { get; set; }
-        public virtual DbSet<vrp_shareholders> vrp_shareholders { get; set; }
-        public virtual DbSet<vrp_trade_finance_products> vrp_trade_finance_products { get; set; }
+        public virtual DbSet<restricted_code_bu_mapping> restricted_code_bu_mapping { get; set; }
+        public virtual DbSet<RunHistoryView> RunHistoryView { get; set; }
+        public virtual DbSet<TodayRunView> TodayRunView { get; set; }
+        public virtual DbSet<MonitoringView> MonitoringView { get; set; }
     }
 }

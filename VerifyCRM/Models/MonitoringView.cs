@@ -14,7 +14,7 @@ namespace VerifyCRM.Models
     
     public partial class MonitoringView
     {
-        public long RowIndex { get; set; }
+        public Nullable<long> rowindex { get; set; }
         public Nullable<int> LevelId { get; set; }
         public string LevelName { get; set; }
         public long RecordCount { get; set; }
@@ -25,6 +25,6 @@ namespace VerifyCRM.Models
         public Nullable<System.DateTime> CompletedOn { get; set; }
         public string Status { get; set; }
         public Nullable<int> Errors { get; set; }
-        public bool IsLastRun { get; set; }
+        public int IsLastRun { get; set; }
     }
 }

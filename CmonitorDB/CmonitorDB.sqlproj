@@ -77,13 +77,9 @@
     <Build Include="dbo\Tables\vrp_credit_card.sql" />
     <Build Include="dbo\Tables\vrp_corporate_customer.sql" />
     <Build Include="dbo\Tables\vrp_collateral.sql" />
-    <Build Include="dbo\Tables\TodayRunView.sql" />
     <Build Include="dbo\Tables\SSISErrorTableLog.sql" />
     <Build Include="dbo\Tables\SSISErrorTable.sql" />
-    <Build Include="dbo\Tables\SSIS_Configurations.sql" />
-    <Build Include="dbo\Tables\RunHistoryView.sql" />
     <Build Include="dbo\Tables\restricted_code_bu_mapping.sql" />
-    <Build Include="dbo\Tables\MonitoringView.sql" />
     <Build Include="dbo\Tables\MonitoringLog.sql" />
     <Build Include="dbo\Tables\Monitoring.sql" />
     <Build Include="dbo\Tables\core_corporate_customer.sql" />

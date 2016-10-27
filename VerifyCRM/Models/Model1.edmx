@@ -1320,10 +1320,11 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.SSIS Configurations' does no
 warning 6002: The table/view 'VrpCrmIntegration.dbo.MonitoringView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MonitoringView">
           <Key>
+            <PropertyRef Name="rowindex" />
             <PropertyRef Name="RecordCount" />
             <PropertyRef Name="IsLastRun" />
           </Key>
-          <Property Name="rowindex" Type="bigint" />
+          <Property Name="rowindex" Type="bigint" Nullable="false" />
           <Property Name="LevelId" Type="int" />
           <Property Name="LevelName" Type="varchar" MaxLength="100" />
           <Property Name="RecordCount" Type="bigint" Nullable="false" />
@@ -1366,10 +1367,10 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="StartedOn" Type="datetime" />
           <Property Name="CompletedOn" Type="datetime" />
           <Property Name="Errors" Type="int" />
-          <Property Name="IsLastRun" Type="bit" />
+          <Property Name="IsLastRun" Type="int" />
           <Property Name="Status" Type="varchar" MaxLength="42" />
         </EntityType>
-        <Association Name="FK__app_colum__table__0682EC34">
+        <Association Name="FK__app_colum__table__2B0A656D">
           <End Role="app_table" Type="Self.app_table" Multiplicity="1" />
           <End Role="app_column" Type="Self.app_column" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2511,7 +2512,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
     [TodayRunView].[Status] AS [Status]
     FROM [dbo].[TodayRunView] AS [TodayRunView]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__app_colum__table__0682EC34" Association="Self.FK__app_colum__table__0682EC34">
+          <AssociationSet Name="FK__app_colum__table__2B0A656D" Association="Self.FK__app_colum__table__2B0A656D">
             <End Role="app_table" EntitySet="app_table" />
             <End Role="app_column" EntitySet="app_column" />
           </AssociationSet>
@@ -3847,15 +3848,16 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="StartedOn" Type="DateTime" Precision="3" />
           <Property Name="CompletedOn" Type="DateTime" Precision="3" />
           <Property Name="Errors" Type="Int32" />
-          <Property Name="IsLastRun" Type="Boolean" />
+          <Property Name="IsLastRun" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="42" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MonitoringView">
           <Key>
+            <PropertyRef Name="rowindex" />
             <PropertyRef Name="RecordCount" />
             <PropertyRef Name="IsLastRun" />
           </Key>
-          <Property Name="rowindex" Type="Int64" />
+          <Property Name="rowindex" Type="Int64" Nullable="false" />
           <Property Name="LevelId" Type="Int32" />
           <Property Name="LevelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="RecordCount" Type="Int64" Nullable="false" />

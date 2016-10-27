@@ -1,6 +1,7 @@
-﻿CREATE view [dbo].[MonitoringView] as
+﻿
+CREATE view [dbo].[MonitoringView] as
 
-SELECT RowIndex+99999 as rowindex, cast(levelid as int)LevelId, LevelName, Vrp_Count "RecordCount",
+SELECT isnull(RowIndex+99999,-999) as rowindex, cast(levelid as int)LevelId, LevelName, Vrp_Count "RecordCount",
 CAST(startdatetime as date) as RunDate,
     case when enddatetime is not null then convert(decimal(14,2), Vrp_Count) / (case when coalesce(datediff(second, startdatetime, enddatetime),0) = 0 then 1 else datediff(second, startdatetime, enddatetime) end) else null end "Throughput",  
     case when enddatetime is not null then (select convert(varchar, datediff(second, startdatetime, enddatetime) / (60 * 60 * 24)) + ':'  
@@ -19,7 +20,7 @@ FROM monitoring
 
 union 
 
-SELECT RowIndex, cast(levelid as int)LevelId, LevelName, Vrp_Count "RecordCount",
+SELECT isnull(RowIndex,-999) as rowIndex, cast(levelid as int)LevelId, LevelName, Vrp_Count "RecordCount",
 CAST(startdatetime as date) as RunDate,
     case when enddatetime is not null then convert(decimal(14,2), Vrp_Count) / (case when coalesce(datediff(second, startdatetime, enddatetime),0) = 0 then 1 else datediff(second, startdatetime, enddatetime) end) else null end "Throughput",  
     case when enddatetime is not null then (select convert(varchar, datediff(second, startdatetime, enddatetime) / (60 * 60 * 24)) + ':'  

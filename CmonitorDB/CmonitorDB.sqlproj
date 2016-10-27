@@ -179,7 +179,6 @@
     <Build Include="dbo\Views\TodayRunView.sql" />
     <Build Include="dbo\Views\RunHistoryView.sql" />
     <Build Include="dbo\Views\MonitoringView.sql" />
-    <Build Include="Security\RoleMemberships.sql" />
     <Build Include="dbo\Stored Procedures\app_update_objects.sql" />
   </ItemGroup>
 </Project>

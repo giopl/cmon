@@ -14,7 +14,7 @@ namespace VerifyCRM.Models
     
     public partial class MonitoringView
     {
-        public Nullable<long> rowindex { get; set; }
+        public long rowindex { get; set; }
         public Nullable<int> LevelId { get; set; }
         public string LevelName { get; set; }
         public long RecordCount { get; set; }

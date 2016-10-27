@@ -23,7 +23,7 @@ namespace VerifyCRM.Models
         public Nullable<System.DateTime> StartedOn { get; set; }
         public Nullable<System.DateTime> CompletedOn { get; set; }
         public Nullable<int> Errors { get; set; }
-        public Nullable<bool> IsLastRun { get; set; }
+        public Nullable<int> IsLastRun { get; set; }
         public string Status { get; set; }
     }
 }

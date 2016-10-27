@@ -50,7 +50,7 @@
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_treasury" Width="1.5" PointX="23.75" PointY="18.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.restricted_code_bu_mapping" Width="1.5" PointX="23.75" PointY="11.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.RunHistoryView" Width="1.5" PointX="5.375" PointY="24.75" />
-        <EntityTypeShape EntityType="VrpCrmIntegrationModel.TodayRunView" Width="1.5" PointX="24.375" PointY="14.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.TodayRunView" Width="1.5" PointX="5.375" PointY="7.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.MonitoringView" Width="1.5" PointX="18.375" PointY="24.75" />
       </Diagram>
     </edmx:Diagrams>

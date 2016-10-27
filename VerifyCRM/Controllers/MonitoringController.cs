@@ -48,7 +48,7 @@ namespace VerifyCRM.Controllers
 
         public ActionResult CurrentRun()
         {
-            
+            //return View(db.Monitoring.ToList());
             return View(db.TodayRunView.ToList());
         }
 

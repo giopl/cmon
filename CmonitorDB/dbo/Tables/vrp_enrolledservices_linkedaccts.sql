@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[vrp_enrolledservices_linkedaccts] (
+    [id_row]               INT              NOT NULL,
+    [Flag]                 NCHAR (1)        NULL,
+    [AccountNumber]        NVARCHAR (50)    NULL,
+    [Customer]             NVARCHAR (10)    NULL,
+    [CustomerGuid]         UNIQUEIDENTIFIER NULL,
+    [Company]              NVARCHAR (10)    NULL,
+    [CompanyGuid]          UNIQUEIDENTIFIER NULL,
+    [Beneficiary]          NVARCHAR (100)   NULL,
+    [Service]              NVARCHAR (50)    NULL,
+    [Channel]              NVARCHAR (50)    NULL,
+    [Frequency]            INT              NULL,
+    [Currency]             NCHAR (3)        NULL,
+    [Amount]               MONEY            NULL,
+    [DomainName]           NVARCHAR (50)    NULL,
+    [OwnerIDType]          INT              NULL,
+    [AccountNumberGuid]    UNIQUEIDENTIFIER NULL,
+    [ServiceGuid]          UNIQUEIDENTIFIER NULL,
+    [EnrolledServicesGuid] UNIQUEIDENTIFIER NULL,
+    [ChannelGuid]          UNIQUEIDENTIFIER NULL,
+    [CurrencyGuid]         UNIQUEIDENTIFIER NULL,
+    [DomainNameGuid]       UNIQUEIDENTIFIER NULL,
+    [PrimaryKeyGuid]       UNIQUEIDENTIFIER NULL
+);
+

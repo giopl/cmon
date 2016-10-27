@@ -71,5 +71,9 @@ namespace VerifyCRM.Models
         public Nullable<int> OwnerIDType { get; set; }
         public Nullable<System.Guid> PrimaryKey_Guid { get; set; }
         public long OrderKey { get; set; }
+        public int id_row { get; set; }
+        public Nullable<int> IsCorporateCard { get; set; }
+        public string RepaymentAccount { get; set; }
+        public Nullable<System.Guid> RepaymentAccount_Guid { get; set; }
     }
 }

@@ -69,5 +69,6 @@ namespace VerifyCRM.Models
         public Nullable<System.Guid> OdLimitCurrencyGuid { get; set; }
         public Nullable<bool> IsCollateral { get; set; }
         public long OrderKey { get; set; }
+        public int id_row { get; set; }
     }
 }

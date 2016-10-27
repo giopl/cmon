@@ -25,5 +25,6 @@ namespace VerifyCRM.Models
         public Nullable<decimal> levelid { get; set; }
         public long rowindex { get; set; }
         public string recorddata { get; set; }
+        public Nullable<int> id_row { get; set; }
     }
 }

@@ -6,8 +6,9 @@
     [EndDateTime]   DATETIME       NULL,
     [Status]        INT            NULL,
     [rowindex]      BIGINT         IDENTITY (1, 1) NOT NULL,
-    [Core_Count]    BIGINT         NOT NULL,
-    [Vrp_Count]     BIGINT         NOT NULL,
-    CONSTRAINT [PK_MonitoringLog] PRIMARY KEY CLUSTERED ([levelid] ASC, [rowindex] ASC, [Core_Count] ASC, [Vrp_Count] ASC)
+    [Core_Count]    BIGINT         CONSTRAINT [DF_MonitoringLog_Core_Count] DEFAULT ((0)) NOT NULL,
+    [Vrp_Count]     BIGINT         NOT NULL
 );
+
+
 

@@ -14,10 +14,17 @@ namespace VerifyCRM.Models
     
     public partial class app_table
     {
+        public app_table()
+        {
+            this.app_column = new HashSet<app_column>();
+        }
+    
         public int id { get; set; }
         public string tab_schema { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public Nullable<System.DateTime> updated_on { get; set; }
+    
+        public virtual ICollection<app_column> app_column { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace VerifyCRM.Models
     public partial class app_column
     {
         public int id { get; set; }
+        public int table_id { get; set; }
         public string tab_schema { get; set; }
         public string tab_name { get; set; }
         public string col_name { get; set; }
@@ -24,5 +25,7 @@ namespace VerifyCRM.Models
         public Nullable<int> ordinal_position { get; set; }
         public string description { get; set; }
         public Nullable<System.DateTime> updated_on { get; set; }
+    
+        public virtual app_table app_table { get; set; }
     }
 }

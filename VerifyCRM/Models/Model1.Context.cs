@@ -25,7 +25,6 @@ namespace VerifyCRM.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<app_column> app_column { get; set; }
         public virtual DbSet<app_table> app_table { get; set; }
         public virtual DbSet<app_user> app_user { get; set; }
         public virtual DbSet<SSISErrorTable> SSISErrorTable { get; set; }
@@ -53,5 +52,64 @@ namespace VerifyCRM.Models
         public virtual DbSet<RunHistoryView> RunHistoryView { get; set; }
         public virtual DbSet<TodayRunView> TodayRunView { get; set; }
         public virtual DbSet<MonitoringView> MonitoringView { get; set; }
+        public virtual DbSet<app_column> app_column { get; set; }
+        public virtual DbSet<core_alert> core_alert { get; set; }
+        public virtual DbSet<core_bank_assurance> core_bank_assurance { get; set; }
+        public virtual DbSet<core_campaign_response> core_campaign_response { get; set; }
+        public virtual DbSet<core_city> core_city { get; set; }
+        public virtual DbSet<core_collateral> core_collateral { get; set; }
+        public virtual DbSet<core_corporate_group> core_corporate_group { get; set; }
+        public virtual DbSet<core_corporate_segment> core_corporate_segment { get; set; }
+        public virtual DbSet<core_credit_card> core_credit_card { get; set; }
+        public virtual DbSet<core_credit_card_account> core_credit_card_account { get; set; }
+        public virtual DbSet<core_currency> core_currency { get; set; }
+        public virtual DbSet<core_current_savings> core_current_savings { get; set; }
+        public virtual DbSet<core_customer_interaction> core_customer_interaction { get; set; }
+        public virtual DbSet<core_debit_card> core_debit_card { get; set; }
+        public virtual DbSet<core_dependents> core_dependents { get; set; }
+        public virtual DbSet<core_enrolled_services> core_enrolled_services { get; set; }
+        public virtual DbSet<core_enrolledservices_linkedaccts> core_enrolledservices_linkedaccts { get; set; }
+        public virtual DbSet<core_fixed_deposit> core_fixed_deposit { get; set; }
+        public virtual DbSet<core_investment> core_investment { get; set; }
+        public virtual DbSet<core_joint_account> core_joint_account { get; set; }
+        public virtual DbSet<core_joint_holders_connections> core_joint_holders_connections { get; set; }
+        public virtual DbSet<core_loan_guarantors> core_loan_guarantors { get; set; }
+        public virtual DbSet<core_loans_loans> core_loans_loans { get; set; }
+        public virtual DbSet<core_outlet> core_outlet { get; set; }
+        public virtual DbSet<core_outlet_transactions_summary> core_outlet_transactions_summary { get; set; }
+        public virtual DbSet<core_pos_machines> core_pos_machines { get; set; }
+        public virtual DbSet<core_power_of_attorney> core_power_of_attorney { get; set; }
+        public virtual DbSet<core_product> core_product { get; set; }
+        public virtual DbSet<core_retail_customer> core_retail_customer { get; set; }
+        public virtual DbSet<core_retail_segment> core_retail_segment { get; set; }
+        public virtual DbSet<core_sectors> core_sectors { get; set; }
+        public virtual DbSet<core_shareholders> core_shareholders { get; set; }
+        public virtual DbSet<core_trade_finance_products> core_trade_finance_products { get; set; }
+        public virtual DbSet<core_treasury> core_treasury { get; set; }
+        public virtual DbSet<SSISErrorTable_Restore> SSISErrorTable_Restore { get; set; }
+        public virtual DbSet<vrp_alert> vrp_alert { get; set; }
+        public virtual DbSet<vrp_bank_assurance> vrp_bank_assurance { get; set; }
+        public virtual DbSet<vrp_campaign_response> vrp_campaign_response { get; set; }
+        public virtual DbSet<vrp_city> vrp_city { get; set; }
+        public virtual DbSet<vrp_co_borrower> vrp_co_borrower { get; set; }
+        public virtual DbSet<vrp_corporate_group> vrp_corporate_group { get; set; }
+        public virtual DbSet<vrp_corporate_segment> vrp_corporate_segment { get; set; }
+        public virtual DbSet<vrp_currency> vrp_currency { get; set; }
+        public virtual DbSet<vrp_customer_interaction> vrp_customer_interaction { get; set; }
+        public virtual DbSet<vrp_dependents> vrp_dependents { get; set; }
+        public virtual DbSet<vrp_enrolled_services_corporate> vrp_enrolled_services_corporate { get; set; }
+        public virtual DbSet<vrp_enrolled_services_retail> vrp_enrolled_services_retail { get; set; }
+        public virtual DbSet<vrp_enrolledservices_linkedaccts> vrp_enrolledservices_linkedaccts { get; set; }
+        public virtual DbSet<vrp_investment> vrp_investment { get; set; }
+        public virtual DbSet<vrp_joint_account> vrp_joint_account { get; set; }
+        public virtual DbSet<vrp_loan_guarantors> vrp_loan_guarantors { get; set; }
+        public virtual DbSet<vrp_outlet> vrp_outlet { get; set; }
+        public virtual DbSet<vrp_outlet_transactions_summary> vrp_outlet_transactions_summary { get; set; }
+        public virtual DbSet<vrp_pos_machines> vrp_pos_machines { get; set; }
+        public virtual DbSet<vrp_power_of_attorney> vrp_power_of_attorney { get; set; }
+        public virtual DbSet<vrp_retail_segment> vrp_retail_segment { get; set; }
+        public virtual DbSet<vrp_sectors> vrp_sectors { get; set; }
+        public virtual DbSet<vrp_shareholders> vrp_shareholders { get; set; }
+        public virtual DbSet<vrp_trade_finance_products> vrp_trade_finance_products { get; set; }
     }
 }

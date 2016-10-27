@@ -20,8 +20,13 @@ namespace VerifyCRM.Controllers
             return View(db.app_table.ToList());
         }
 
+        public ActionResult ShowTables()
+        {
+            return View(db.app_table.ToList());
+        }
+
         // GET: Table/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult TableDetails(int? id)
         {
             if (id == null)
             {
@@ -41,6 +46,9 @@ namespace VerifyCRM.Controllers
             return View();
         }
 
+        
+
+
         // POST: Table/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -59,7 +67,7 @@ namespace VerifyCRM.Controllers
         }
 
         // GET: Table/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult EditTable(int? id)
         {
             if (id == null)
             {
@@ -78,13 +86,14 @@ namespace VerifyCRM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,tab_schema,name,description,updated_on")] app_table app_table)
+        public ActionResult EditTable([Bind(Include = "id,tab_schema,name,description,updated_on")] app_table app_table)
         {
             if (ModelState.IsValid)
             {
+                app_table.updated_on = DateTime.Now;
                 db.Entry(app_table).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ShowTables");
             }
             return View(app_table);
         }

@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bb17af81537d468ead62114b8cd70900" Name="Diagram1">
-        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_column" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_table" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_user" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.SSISErrorTable" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
@@ -33,6 +32,66 @@
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.RunHistoryView" Width="1.5" PointX="21.375" PointY="7.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.TodayRunView" Width="1.5" PointX="9.375" PointY="21.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.MonitoringView" Width="1.5" PointX="21.375" PointY="10.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_column" Width="1.5" PointX="5.375" PointY="23.875" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_alert" Width="1.5" PointX="11.75" PointY="21.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_bank_assurance" Width="1.5" PointX="21.75" PointY="15.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_campaign_response" Width="1.5" PointX="13.75" PointY="22.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_city" Width="1.5" PointX="15.75" PointY="22.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_collateral" Width="1.5" PointX="21.75" PointY="22.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_corporate_group" Width="1.5" PointX="23.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_corporate_segment" Width="1.5" PointX="23.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_credit_card" Width="1.5" PointX="23.75" PointY="6.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_credit_card_account" Width="1.5" PointX="23.75" PointY="17.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_currency" Width="1.5" PointX="25.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_current_savings" Width="1.5" PointX="0.75" PointY="25.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_customer_interaction" Width="1.5" PointX="25.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_debit_card" Width="1.5" PointX="7.75" PointY="25.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_dependents" Width="1.5" PointX="25.75" PointY="9.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_enrolled_services" Width="1.5" PointX="9.75" PointY="25.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_enrolledservices_linkedaccts" Width="1.5" PointX="25.75" PointY="14.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_fixed_deposit" Width="1.5" PointX="15.75" PointY="25.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_investment" Width="1.5" PointX="25.75" PointY="19.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_joint_account" Width="1.5" PointX="27.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_joint_holders_connections" Width="1.5" PointX="27.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_loan_guarantors" Width="1.5" PointX="27.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_loans_loans" Width="1.5" PointX="27.75" PointY="11.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_outlet" Width="1.5" PointX="11.75" PointY="27.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_outlet_transactions_summary" Width="1.5" PointX="21.75" PointY="27.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_pos_machines" Width="1.5" PointX="27.75" PointY="25.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_power_of_attorney" Width="1.5" PointX="2.75" PointY="28.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_product" Width="1.5" PointX="4.75" PointY="28.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_retail_customer" Width="1.5" PointX="29.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_retail_segment" Width="1.5" PointX="23.75" PointY="30.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_sectors" Width="1.5" PointX="31.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_shareholders" Width="1.5" PointX="31.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_trade_finance_products" Width="1.5" PointX="31.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_treasury" Width="1.5" PointX="31.75" PointY="14.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.SSISErrorTable_Restore" Width="1.5" PointX="31.75" PointY="20.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_alert" Width="1.5" PointX="31.75" PointY="25.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_bank_assurance" Width="1.5" PointX="25.75" PointY="31.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_campaign_response" Width="1.5" PointX="31.75" PointY="30.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_city" Width="1.5" PointX="4.75" PointY="32.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_co_borrower" Width="1.5" PointX="6.75" PointY="32.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_corporate_group" Width="1.5" PointX="8.75" PointY="32.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_corporate_segment" Width="1.5" PointX="10.75" PointY="32.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_currency" Width="1.5" PointX="12.75" PointY="32.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_customer_interaction" Width="1.5" PointX="33.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_dependents" Width="1.5" PointX="33.75" PointY="6.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_enrolled_services_corporate" Width="1.5" PointX="33.75" PointY="12.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_enrolled_services_retail" Width="1.5" PointX="33.75" PointY="18.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_enrolledservices_linkedaccts" Width="1.5" PointX="21.75" PointY="33.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_investment" Width="1.5" PointX="33.75" PointY="24.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_joint_account" Width="1.5" PointX="35.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_loan_guarantors" Width="1.5" PointX="35.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_outlet" Width="1.5" PointX="35.75" PointY="8.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_outlet_transactions_summary" Width="1.5" PointX="8.75" PointY="35.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_pos_machines" Width="1.5" PointX="35.75" PointY="13.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_power_of_attorney" Width="1.5" PointX="35.75" PointY="20.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_retail_segment" Width="1.5" PointX="35.75" PointY="26.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_sectors" Width="1.5" PointX="35.75" PointY="29.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_shareholders" Width="1.5" PointX="35.75" PointY="32.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.vrp_trade_finance_products" Width="1.5" PointX="2.75" PointY="36.75" />
+        <AssociationConnector Association="VrpCrmIntegrationModel.FK__app_colum__table__0682EC34" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

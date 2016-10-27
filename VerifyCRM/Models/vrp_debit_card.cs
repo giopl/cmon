@@ -50,5 +50,6 @@ namespace VerifyCRM.Models
         public Nullable<System.Guid> DomainName_guid { get; set; }
         public Nullable<int> OwnerIDType { get; set; }
         public long OrderKey { get; set; }
+        public int id_row { get; set; }
     }
 }

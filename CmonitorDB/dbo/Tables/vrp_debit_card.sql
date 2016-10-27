@@ -1,9 +1,10 @@
 ﻿CREATE TABLE [dbo].[vrp_debit_card] (
+    [id_row]                   INT              NOT NULL,
     [PrimaryKey_guid]          UNIQUEIDENTIFIER NULL,
     [Flag]                     NCHAR (1)        NULL,
-    [ActivationDate]           DATETIME         NULL,
-    [AvailableCashLimit]       DECIMAL (19, 4)  NULL,
-    [AvailableLimit]           DECIMAL (19, 4)  NULL,
+    [ActivationDate]           DATE             NULL,
+    [AvailableCashLimit]       MONEY            NULL,
+    [AvailableLimit]           MONEY            NULL,
     [Bank]                     NVARCHAR (100)   NULL,
     [Bank_guid]                UNIQUEIDENTIFIER NULL,
     [Branch]                   NVARCHAR (50)    NULL,
@@ -18,10 +19,10 @@
     [Customer]                 NVARCHAR (75)    NULL,
     [Customer_guid]            UNIQUEIDENTIFIER NULL,
     [EmbossingName]            NVARCHAR (50)    NULL,
-    [ExpiryDate]               DATETIME         NULL,
+    [ExpiryDate]               DATE             NULL,
     [MaskedCardNumber]         NVARCHAR (50)    NULL,
-    [OpeningDate]              DATETIME         NULL,
-    [OutstandingBalance]       DECIMAL (19, 4)  NULL,
+    [OpeningDate]              DATE             NULL,
+    [OutstandingBalance]       MONEY            NULL,
     [PrimaryCardHolder]        NVARCHAR (50)    NULL,
     [PrimaryCardHolder_guid]   UNIQUEIDENTIFIER NULL,
     [Product]                  NVARCHAR (50)    NULL,
@@ -34,7 +35,8 @@
     [DomainName]               NVARCHAR (50)    NULL,
     [DomainName_guid]          UNIQUEIDENTIFIER NULL,
     [OwnerIDType]              INT              NULL,
-    [OrderKey]                 BIGINT           IDENTITY (1, 1) NOT NULL,
-    CONSTRAINT [PK_vrp_debit_card] PRIMARY KEY CLUSTERED ([OrderKey] ASC)
+    [OrderKey]                 BIGINT           IDENTITY (1, 1) NOT NULL
 );
+
+
 

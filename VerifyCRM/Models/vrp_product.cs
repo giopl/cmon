@@ -22,5 +22,6 @@ namespace VerifyCRM.Models
         public string Currency { get; set; }
         public Nullable<System.Guid> CurrencyGuid { get; set; }
         public string flag { get; set; }
+        public int id_row { get; set; }
     }
 }

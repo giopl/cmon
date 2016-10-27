@@ -110,5 +110,6 @@ namespace VerifyCRM.Models
         public Nullable<System.Guid> corporategroup_guid { get; set; }
         public string owner { get; set; }
         public Nullable<System.Guid> owner_guid { get; set; }
+        public int id_row { get; set; }
     }
 }

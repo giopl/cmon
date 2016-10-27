@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[core_bank_assurance] (
+    [id_row]                 INT            IDENTITY (1, 1) NOT NULL,
+    [include_in_run]         BIT            DEFAULT ((1)) NOT NULL,
+    [flag]                   NCHAR (1)      NULL,
+    [ins_policy_id]          NVARCHAR (100) NULL,
+    [type]                   INT            NULL,
+    [policy_name]            NVARCHAR (100) NULL,
+    [contract_date]          DATE           NULL,
+    [maturity_date]          DATE           NULL,
+    [ccy_code]               NCHAR (3)      NULL,
+    [ccy_type]               INT            NULL,
+    [amount]                 MONEY          NULL,
+    [customer_main_insured]  NCHAR (10)     NULL,
+    [company_main_insured]   NCHAR (10)     NULL,
+    [customer_joint_insured] NCHAR (10)     NULL,
+    [company_joint_insured]  NCHAR (10)     NULL,
+    [bank]                   NCHAR (10)     NULL,
+    [status]                 INT            NULL,
+    [policy_number]          NVARCHAR (500) NULL,
+    [product]                NVARCHAR (50)  NULL,
+    [product_group]          NVARCHAR (50)  NULL,
+    [sum_insured]            MONEY          NULL,
+    [insurance_company]      NCHAR (10)     NULL,
+    [owner]                  NVARCHAR (50)  NULL,
+    [owneridtype]            INT            NULL
+);
+

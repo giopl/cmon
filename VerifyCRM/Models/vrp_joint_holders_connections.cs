@@ -25,5 +25,6 @@ namespace VerifyCRM.Models
         public string RoleId { get; set; }
         public Nullable<int> ConnectFromTypeCode { get; set; }
         public long OrderKey { get; set; }
+        public int id_row { get; set; }
     }
 }

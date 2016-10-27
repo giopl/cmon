@@ -34,5 +34,7 @@ namespace VerifyCRM.Models
         public Nullable<System.Guid> CollateralGuid { get; set; }
         public Nullable<int> status { get; set; }
         public long OrderKey { get; set; }
+        public int id_row { get; set; }
+        public Nullable<long> Orderkey { get; set; }
     }
 }

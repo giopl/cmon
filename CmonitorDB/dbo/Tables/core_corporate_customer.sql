@@ -1,4 +1,6 @@
 ﻿CREATE TABLE [dbo].[core_corporate_customer] (
+    [id_row]                         INT             IDENTITY (1, 1) NOT NULL,
+    [include_in_run]                 BIT             DEFAULT ((1)) NOT NULL,
     [cif]                            NVARCHAR (100)  NOT NULL,
     [county]                         NVARCHAR (100)  NULL,
     [line_1]                         NVARCHAR (100)  NULL,
@@ -45,11 +47,11 @@
     [special_codes]                  NVARCHAR (100)  NULL,
     [s_and_p_long_term]              INT             NULL,
     [s_and_p_short_term]             INT             NULL,
-    [total_fund_based_exposure]      DECIMAL (19, 4) NULL,
-    [total_limits]                   DECIMAL (19, 4) NULL,
-    [total_credit]                   DECIMAL (19, 4) NULL,
-    [total_non_fund_based_exposure]  DECIMAL (19, 4) NULL,
-    [total_utilization]              DECIMAL (19, 4) NULL,
+    [total_fund_based_exposure]      MONEY           NULL,
+    [total_limits]                   MONEY           NULL,
+    [total_credit]                   MONEY           NULL,
+    [total_non_fund_based_exposure]  MONEY           NULL,
+    [total_utilization]              MONEY           NULL,
     [trade_license_expiry_date]      DATETIME        NULL,
     [trade_license_issuance_date]    DATETIME        NULL,
     [trade_license_number]           NVARCHAR (100)  NULL,
@@ -77,7 +79,8 @@
     [alt_credit_analyst]             NVARCHAR (50)   NULL,
     [owneridtype]                    INT             NULL,
     [currency]                       NCHAR (3)       NULL,
-    [access_restrict_type_code]      INT             NULL,
-    CONSTRAINT [PK_core_corporate_customer] PRIMARY KEY CLUSTERED ([cif] ASC)
+    [access_restrict_type_code]      INT             NULL
 );
+
+
 

@@ -4,6 +4,8 @@
     [name]        NVARCHAR (100) NOT NULL,
     [description] NVARCHAR (500) NULL,
     [updated_on]  DATETIME       NULL,
-    CONSTRAINT [PK_app_table] PRIMARY KEY CLUSTERED ([id] ASC)
+    PRIMARY KEY CLUSTERED ([id] ASC)
 );
+
+
 

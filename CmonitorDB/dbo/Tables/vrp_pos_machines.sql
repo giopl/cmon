@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[vrp_pos_machines] (
+    [id_row]                     INT              NOT NULL,
+    [Flag]                       NCHAR (1)        NULL,
+    [MachineId]                  NVARCHAR (15)    NULL,
+    [Outlet]                     NVARCHAR (15)    NULL,
+    [Company]                    NVARCHAR (10)    NULL,
+    [Customer]                   NVARCHAR (10)    NULL,
+    [YTDTransactions]            INT              NULL,
+    [MTDTransactions]            INT              NULL,
+    [YTDVolume]                  MONEY            NULL,
+    [MTDVolume]                  MONEY            NULL,
+    [POSModel]                   NVARCHAR (100)   NULL,
+    [ApplicationSoftwareVersion] NVARCHAR (100)   NULL,
+    [DccEnabled]                 BIT              NULL,
+    [IsMulticurrency]            BIT              NULL,
+    [IsPayingRentalFees]         BIT              NULL,
+    [POSRentalFeeAmount]         MONEY            NULL,
+    [DomainName]                 NVARCHAR (50)    NULL,
+    [OwnerIDType]                INT              NULL,
+    [CompanyGuid]                UNIQUEIDENTIFIER NULL,
+    [CustomerGuid]               UNIQUEIDENTIFIER NULL,
+    [DomainNameGuid]             UNIQUEIDENTIFIER NULL,
+    [PrimaryKeyGuid]             UNIQUEIDENTIFIER NULL,
+    [OutletGuid]                 UNIQUEIDENTIFIER NULL
+);
+

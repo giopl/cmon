@@ -5,8 +5,10 @@
     [lastname]      NVARCHAR (50)  NULL,
     [email]         NVARCHAR (100) NULL,
     [user_role]     INT            NULL,
-    [last_accessed] DATETIME       NULL,
-    [is_active]     BIT            NOT NULL,
-    CONSTRAINT [PK_app_user] PRIMARY KEY CLUSTERED ([username] ASC)
+    [last_accessed] DATETIME       DEFAULT (getdate()) NULL,
+    [is_active]     BIT            DEFAULT ((1)) NOT NULL,
+    PRIMARY KEY CLUSTERED ([username] ASC)
 );
+
+
 

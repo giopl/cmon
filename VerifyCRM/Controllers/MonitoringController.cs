@@ -30,8 +30,32 @@ namespace VerifyCRM.Controllers
 
         public ActionResult RunHistory()
         {
+            StringBuilder dts = new StringBuilder();
+            StringBuilder records = new StringBuilder();
+            StringBuilder duration = new StringBuilder();
+            var result = db.RunHistoryView.ToList();
 
-            return View(db.RunHistoryView);
+
+            foreach (var d in result.OrderBy(x => x.rundate))
+            {
+                
+                    dts.AppendFormat("'{0}',", d.rundate.ToString("dd-MM"));
+
+                    records.AppendFormat("{0},", (d.numRows / 1000000.0));
+                    duration.AppendFormat("{0},", d.duration_seconds/3600.0);
+                
+            }
+
+            dts.Length--;
+            records.Length--;
+            duration.Length--;
+
+            ViewBag.RunDates = dts.ToString();
+            ViewBag.Records = records.ToString();
+            ViewBag.Duration = duration.ToString();
+
+
+            return View(result);
             //return View(db.RunHiso)
 
         }
@@ -74,9 +98,30 @@ namespace VerifyCRM.Controllers
         public ActionResult PackageRun(int id)
         {
 
-            
-
+            StringBuilder dts = new StringBuilder();
+            StringBuilder records = new StringBuilder();
+            StringBuilder duration = new StringBuilder();
+       
             var result = db.MonitoringView.Where(x => x.LevelId == id).ToList();
+
+            foreach(var d in result.OrderBy(x=>x.StartedOn))
+            {
+                if(d.RunDate.HasValue)
+                {
+                    dts.AppendFormat("'{0}',", d.RunDate.Value.ToString("dd-MM"));
+
+                    records.AppendFormat("{0},", (d.RecordCount/100L));
+                    duration.AppendFormat("{0},", d.seconds);
+                }    
+            }
+
+            dts.Length--;
+            records.Length--;
+            duration.Length--;
+
+            ViewBag.RunDates = dts.ToString();
+            ViewBag.Records = records.ToString();
+            ViewBag.Duration = duration.ToString();
 
                 return View(result);
         }
@@ -188,3 +233,4 @@ namespace VerifyCRM.Controllers
         }
     }
 }
+

@@ -2,12 +2,20 @@
 @using utils = VerifyCRM.Helpers.Utils
 @{
     ViewBag.Title = "Run History";
+
+    var runDates = ViewBag.RunDates;
+    var records = ViewBag.Records;
+    var duration = ViewBag.Duration;
+    
+    
+    
 }
 
 <h2>Run History</h2>
 
 
-    <div id="container"></div>
+    @*<div id="container"></div>*@
+<div id="container2"></div>
 
 <table class="table">
     <tr>
@@ -45,8 +53,10 @@
             @item.completed.Value.ToString("HH:mm:ss")
         </td>
         <td>
-
-            @Html.DisplayFor(modelItem => item.DurationStr)
+            
+            <span class="text-@(item.duration_seconds < 7200 ? "info" : (item.duration_seconds > 14400? "danger" : ""))">
+                @Html.DisplayFor(modelItem => item.DurationStr)
+            </span>
         </td>
         
         <td>
@@ -117,6 +127,42 @@
                             this.point.y + ' ' + this.point.name.toLowerCase();
                     }
                 }
+            });
+        });
+
+
+        $(function () {
+            $('#container2').highcharts({
+                title: {
+                    text: 'Run History'
+                },
+                xAxis: {
+                    categories: [@Html.Raw(runDates)]
+                },
+                labels: {
+                    items: [{
+                        html: 'Total Run Time',
+                        style: {
+                            left: '50px',
+                            top: '18px',
+                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                        }
+                    }]
+                },
+                series: [{
+                    type: 'column',
+                    name: 'Num Records (millions)',
+                    data: [@Html.Raw(records)]
+                }, {
+                    type: 'spline',
+                    name: 'Time Hours',
+                    data: [@Html.Raw(duration)] ,
+                    marker: {
+                        lineWidth: 2,
+                        lineColor: Highcharts.getOptions().colors[5],
+                        fillColor: 'white'
+                    }
+                }]
             });
         });
 

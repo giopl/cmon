@@ -37,7 +37,10 @@
 }
 
 <h2>Current Run</h2>
-
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("RunHistory")">Home</a></li>
+       <li class="active">Current Run</li>
+</ol>
 <p>
     @if (notStarted)
     {

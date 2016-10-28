@@ -32,6 +32,14 @@ namespace VerifyCRM.Models
                 //here backslash is must to tell that colon is
                 //not the part of format, it just a character that we want in output
                 string str = time.ToString(@"hh\:mm\:ss");
+
+                // if duration is more than 24 hours
+                if(duration_seconds.Value>84600)
+                {
+                    var days = (duration_seconds.Value)/84600;
+                    str = string.Concat(days, ".", str);
+                }
+
                 return str;
             }
         }

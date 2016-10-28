@@ -327,6 +327,7 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Helpers\backupdata.zip" />
+    <Content Include="Helpers\backup2.zip" />
     <None Include="Properties\PublishProfiles\Dwh-appsdev.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\HighCharts.js" />

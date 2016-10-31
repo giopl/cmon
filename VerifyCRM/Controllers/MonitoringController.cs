@@ -65,6 +65,8 @@ namespace VerifyCRM.Controllers
         {
             decimal _id = Convert.ToDecimal(id);
 
+            ViewBag.DateRun = Helpers.Utils.ConvertDateToInt(start);
+
             return View(db.SSISErrorTable.Where(x => x.levelid == _id && x.createdDate >= start && x.createdDate <= end).ToList());
         }
 

@@ -17,7 +17,8 @@ namespace VerifyCRM.Models
         public int id { get; set; }
         public decimal level_id { get; set; }
         public string package_name { get; set; }
-        public bool is_active { get; set; }
         public string package_type { get; set; }
+        public bool is_active { get; set; }
+        public string package_description { get; set; }
     }
 }

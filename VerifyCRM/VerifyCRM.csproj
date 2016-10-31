@@ -379,8 +379,8 @@
     <Content Include="Views\Package\Create.cshtml" />
     <Content Include="Views\Package\Delete.cshtml" />
     <Content Include="Views\Package\Details.cshtml" />
-    <Content Include="Views\Package\Edit.cshtml" />
-    <Content Include="Views\Package\Index.cshtml" />
+    <Content Include="Views\Package\EditPackage.cshtml" />
+    <Content Include="Views\Package\Packages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

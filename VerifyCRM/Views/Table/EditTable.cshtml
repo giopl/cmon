@@ -4,7 +4,13 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit Table</h2>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("RunHistory","Monitoring")">Home</a></li>
+    <li><a href="@Url.Action("ShowTables")">List Tables</a></li>
+    <li class="active">Edit @Model.fulltablename</li>
+</ol>
+
 
 
 @using (Html.BeginForm())

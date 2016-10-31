@@ -15,10 +15,19 @@ namespace VerifyCRM.Controllers
         private CRMEntities db = new CRMEntities();
 
         // GET: Package
+        
+        
         public ActionResult Index()
+        {
+            return RedirectToAction("Packages");
+        }
+
+        public ActionResult Packages()
         {
             return View(db.app_package.ToList());
         }
+
+
 
         // GET: Package/Details/5
         public ActionResult Details(int? id)
@@ -46,7 +55,7 @@ namespace VerifyCRM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,level_id,package_name,is_active,package_type")] app_package app_package)
+        public ActionResult Create([Bind(Include = "id,level_id,package_name,is_active,package_type,package_description")] app_package app_package)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +68,7 @@ namespace VerifyCRM.Controllers
         }
 
         // GET: Package/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult EditPackage(int? id)
         {
             if (id == null)
             {
@@ -78,7 +87,7 @@ namespace VerifyCRM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,level_id,package_name,is_active,package_type")] app_package app_package)
+        public ActionResult EditPackage([Bind(Include = "id,level_id,package_name,is_active,package_type,package_description")] app_package app_package)
         {
             if (ModelState.IsValid)
             {

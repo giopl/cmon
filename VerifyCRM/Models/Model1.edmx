@@ -30,6 +30,7 @@
           <Property Name="package_name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="package_type" Type="nvarchar" MaxLength="20" />
           <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="package_description" Type="nvarchar" MaxLength="2000" />
         </EntityType>
         <EntityType Name="app_table">
           <Key>
@@ -1370,7 +1371,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="IsLastRun" Type="int" />
           <Property Name="Status" Type="varchar" MaxLength="42" />
         </EntityType>
-        <Association Name="FK__app_colum__table__2B0A656D">
+        <Association Name="FK__app_colum__table__0682EC34">
           <End Role="app_table" Type="Self.app_table" Multiplicity="1" />
           <End Role="app_column" Type="Self.app_column" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2512,7 +2513,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
     [TodayRunView].[Status] AS [Status]
     FROM [dbo].[TodayRunView] AS [TodayRunView]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__app_colum__table__2B0A656D" Association="Self.FK__app_colum__table__2B0A656D">
+          <AssociationSet Name="FK__app_colum__table__0682EC34" Association="Self.FK__app_colum__table__0682EC34">
             <End Role="app_table" EntitySet="app_table" />
             <End Role="app_column" EntitySet="app_column" />
           </AssociationSet>
@@ -2539,7 +2540,6 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
             <End EntitySet="app_table" Role="app_table" />
             <End EntitySet="app_column" Role="app_column" />
           </AssociationSet>
-          <EntitySet Name="app_package" EntityType="VrpCrmIntegrationModel.app_package" />
           <EntitySet Name="app_user" EntityType="VrpCrmIntegrationModel.app_user" />
           <EntitySet Name="SSISErrorTable" EntityType="VrpCrmIntegrationModel.SSISErrorTable" />
           <EntitySet Name="Monitoring" EntityType="VrpCrmIntegrationModel.Monitoring" />
@@ -2583,6 +2583,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <EntitySet Name="RunHistoryView" EntityType="VrpCrmIntegrationModel.RunHistoryView" />
           <EntitySet Name="TodayRunView" EntityType="VrpCrmIntegrationModel.TodayRunView" />
           <EntitySet Name="MonitoringView" EntityType="VrpCrmIntegrationModel.MonitoringView" />
+          <EntitySet Name="app_package" EntityType="VrpCrmIntegrationModel.app_package" />
         </EntityContainer>
         <EntityType Name="app_column">
           <Key>
@@ -2613,16 +2614,6 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="app_package">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="level_id" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
-          <Property Name="package_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="is_active" Type="Boolean" Nullable="false" />
-          <Property Name="package_type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="app_user">
           <Key>
             <PropertyRef Name="username" />
@@ -3870,6 +3861,17 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="Errors" Type="Int32" />
           <Property Name="IsLastRun" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="app_package">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="level_id" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="package_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="package_type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="package_description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3900,17 +3902,6 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
                 <ScalarProperty Name="tab_name" ColumnName="tab_name" />
                 <ScalarProperty Name="tab_schema" ColumnName="tab_schema" />
                 <ScalarProperty Name="table_id" ColumnName="table_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="app_package">
-            <EntityTypeMapping TypeName="VrpCrmIntegrationModel.app_package">
-              <MappingFragment StoreEntitySet="app_package">
-                <ScalarProperty Name="package_type" ColumnName="package_type" />
-                <ScalarProperty Name="is_active" ColumnName="is_active" />
-                <ScalarProperty Name="package_name" ColumnName="package_name" />
-                <ScalarProperty Name="level_id" ColumnName="level_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -5150,6 +5141,18 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
                 <ScalarProperty Name="LevelName" ColumnName="LevelName" />
                 <ScalarProperty Name="LevelId" ColumnName="LevelId" />
                 <ScalarProperty Name="rowindex" ColumnName="rowindex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_package">
+            <EntityTypeMapping TypeName="VrpCrmIntegrationModel.app_package">
+              <MappingFragment StoreEntitySet="app_package">
+                <ScalarProperty Name="package_description" ColumnName="package_description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="package_type" ColumnName="package_type" />
+                <ScalarProperty Name="package_name" ColumnName="package_name" />
+                <ScalarProperty Name="level_id" ColumnName="level_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

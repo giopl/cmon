@@ -1,16 +1,17 @@
 ﻿@model IEnumerable<VerifyCRM.Models.app_package>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Packages";
 }
 
-<h2>Index</h2>
+<h2>Packages</h2>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("RunHistory","Monitoring")">Home</a></li>
+        <li class="active">Packages</li>
+</ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
-    <tr>
+    <tr> 
         <th>
             @Html.DisplayNameFor(model => model.level_id)
         </th>
@@ -27,12 +28,15 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="@(item.is_active?"":"grey")">
         <td>
             @Html.DisplayFor(modelItem => item.level_id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.package_name)
+            <a href="@Url.Action("PackageRun", "Monitoring", new { id = item.id })">
+                @Html.DisplayFor(modelItem => item.package_name)
+            </a>
+            <br /><small class="text-muted">@item.package_description</small>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.is_active)
@@ -41,9 +45,8 @@
             @Html.DisplayFor(modelItem => item.package_type)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            <a href="@Url.Action("EditPackage", "Package", new  { id = item.id })">Edit</a>
+            
         </td>
     </tr>
 }

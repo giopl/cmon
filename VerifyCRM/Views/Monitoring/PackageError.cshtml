@@ -3,9 +3,18 @@
 @{
     ViewBag.Title = "Package Error";
     var package = Model.FirstOrDefault();
+    
+    var rundate = ViewBag.DateRun;
 }
 
 <h2>Package Error(s)</h2>
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("RunHistory","Monitoring")">Home</a></li>
+    <li><a href="@Url.Action("DateRun","Monitoring", new { id = rundate  })">Date Run</a></li>
+    <li class="active">Errors</li>
+</ol>
+
 
 <p>
     <h3>

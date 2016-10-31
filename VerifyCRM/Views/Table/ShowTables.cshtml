@@ -7,7 +7,10 @@
 <h2>Show Tables</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("RunHistory","Monitoring")">Home</a></li>
+        <li class="active">List Tables</li>
+    </ol>
 </p>
 <table class="table table-striped">
     <tr>

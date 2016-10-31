@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_table" PointX="0.75" PointY="1.625" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_column" PointX="3" PointY="1" Width="1.5" />
         <AssociationConnector Association="VrpCrmIntegrationModel.FK__app_colum__table__0682EC34" />
-        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_package" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_user" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.SSISErrorTable" Width="1.5" PointX="2.75" PointY="5.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.Monitoring" Width="1.5" PointX="5.75" PointY="3.75" />
@@ -52,6 +51,7 @@
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.RunHistoryView" Width="1.5" PointX="5.375" PointY="24.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.TodayRunView" Width="1.5" PointX="5.375" PointY="7.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.MonitoringView" Width="1.5" PointX="18.375" PointY="24.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_package" Width="1.5" PointX="24.375" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

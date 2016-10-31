@@ -27,7 +27,6 @@ namespace VerifyCRM.Models
     
         public virtual DbSet<app_table> app_table { get; set; }
         public virtual DbSet<app_column> app_column { get; set; }
-        public virtual DbSet<app_package> app_package { get; set; }
         public virtual DbSet<app_user> app_user { get; set; }
         public virtual DbSet<SSISErrorTable> SSISErrorTable { get; set; }
         public virtual DbSet<Monitoring> Monitoring { get; set; }
@@ -71,5 +70,6 @@ namespace VerifyCRM.Models
         public virtual DbSet<RunHistoryView> RunHistoryView { get; set; }
         public virtual DbSet<TodayRunView> TodayRunView { get; set; }
         public virtual DbSet<MonitoringView> MonitoringView { get; set; }
+        public virtual DbSet<app_package> app_package { get; set; }
     }
 }

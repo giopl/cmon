@@ -4,14 +4,17 @@
     ViewBag.Title = "Table Details";
 }
 
-<h2>Table Details</h2>
+<h3>Table Details</h3>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("RunHistory","Monitoring")">Home</a></li>
+    <li><a href="@Url.Action("ShowTables")">List Tables</a></li>
+    <li class="active">@Model.fulltablename</li>
+</ol>
 
 <div>
-    <h4 class="text-primary">@Model.fulltablename</h4>
+    <small class="text-muted "> @Html.DisplayFor(model => model.description)</small>
     <hr />
-    <div class="text-muted ">
-        @Html.DisplayFor(model => model.description)
-    </div>
+   
     
 </div>
 

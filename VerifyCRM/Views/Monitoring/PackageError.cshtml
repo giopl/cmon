@@ -4,6 +4,8 @@
     ViewBag.Title = "Package Error";
     var package = Model.FirstOrDefault();
     
+    
+    
     var rundate = ViewBag.DateRun;
 }
 
@@ -18,7 +20,11 @@
 
 <p>
     <h3>
-        @package.levelid @package.packageName (@Model.Count())
+        @if(package != null)
+        {
+            @package.levelid @package.packageName @:&nbsp; @Model.Count() errors
+        }
+        
     </h3>
 </p>
 <table class="table">

@@ -1,4 +1,5 @@
 ﻿
+
 CREATE view [dbo].[MonitoringView] as
 
 SELECT isnull(RowIndex+99999,-999) as rowindex, cast(levelid as int)LevelId, LevelName, Vrp_Count "RecordCount",
@@ -33,6 +34,6 @@ CAST(startdatetime as date) as RunDate,
         When 3 Then CAST(Status As varchar) + ' - Completed'
         When -99 Then CAST(Status As varchar) + ' - Failed'
     Else CAST(Status As varchar) End "Status",
-    (case when enddatetime is not null then (select count(*) from SSISErrorTable where PackageName = Levelname and createdDate between startdatetime and enddatetime) else null end) "Errors",
+    (case when enddatetime is not null then (select count(*) from SSISErrorTableLog where PackageName = Levelname and createdDate between startdatetime and enddatetime) else null end) "Errors",
 	0 as IsLastRun
 FROM monitoringLog

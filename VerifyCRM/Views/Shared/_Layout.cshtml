@@ -7,6 +7,19 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+@{
+    var username = Environment.UserName;
+    //var username = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+
+    if(string.IsNullOrWhiteSpace(username))
+    {
+        username = User.Identity.Name;      
+    }
+    
+    
+    
+    
+}
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -21,14 +34,24 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="@Url.Action("RunHistory","Monitoring")" title="Run History"><span class="fa fa-history"></span> </a></li>
-                    <li><a href="@Url.Action("CurrentRun","Monitoring")" title="Current Run"><span class="fa fa-database"></span> </a></li>
+                    <li><a href="@Url.Action("CurrentRun","Monitoring")" title="Current Run"><span class="fa fa-map-marker"></span> </a></li>
                     <li><a href="@Url.Action("LastRun","Monitoring")" title="Last Run"><span class="fa fa-reply"></span> </a></li>
                 <li><a href="@Url.Action("ShowTables","Table")" title="List of Tables"><span class="fa fa-table"></span> </a></li>
                     <li><a href="@Url.Action("Index","Package")" title="Packages"><span class="fa fa-shopping-basket"></span> </a></li>
+                    <li><a href="@Url.Action("Index","Field")" title="Mapping"><span class="fa fa-map-o"></span> </a></li>
                     
                 </ul>
+
+                <p class="nav navbar-text navbar-right">
+                        <span class="fa fa-user"></span>&nbsp;@username
+                </p>
+
+
+
             </div>
         </div>
+
+        
     </div>
     <div class="container body-content">
         @RenderBody()

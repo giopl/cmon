@@ -71,5 +71,6 @@ namespace VerifyCRM.Models
         public virtual DbSet<TodayRunView> TodayRunView { get; set; }
         public virtual DbSet<MonitoringView> MonitoringView { get; set; }
         public virtual DbSet<app_package> app_package { get; set; }
+        public virtual DbSet<app_crm_field> app_crm_field { get; set; }
     }
 }

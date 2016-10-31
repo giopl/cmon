@@ -26,3 +26,24 @@ textarea {
 .grey {
     color:#999;
 }
+
+
+/* override */
+.navbar-inverse {
+    background-color: #3399ff;
+    border-color: #3399ff;
+    color: #fff;
+}
+
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-text {
+    color: #fff;
+}

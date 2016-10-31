@@ -21,6 +21,25 @@
           <Property Name="description" Type="nvarchar" MaxLength="500" />
           <Property Name="updated_on" Type="datetime" />
         </EntityType>
+        <EntityType Name="app_crm_field">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="crm_entity" Type="nvarchar" MaxLength="100" />
+          <Property Name="crm_section" Type="nvarchar" MaxLength="300" />
+          <Property Name="label" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="batch_integration_field" Type="nvarchar" MaxLength="200" />
+          <Property Name="crm_field" Type="nvarchar" MaxLength="200" />
+          <Property Name="db2_field" Type="nvarchar" MaxLength="1500" />
+          <Property Name="web_service_field" Type="nvarchar" MaxLength="200" />
+          <Property Name="is_used_on_crm" Type="bit" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar(max)" />
+          <Property Name="updated_by" Type="nvarchar" MaxLength="30" />
+          <Property Name="updated_on" Type="datetime" />
+          <Property Name="tags" Type="nvarchar" MaxLength="1000" />
+          <Property Name="is_web_service_field" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="app_package">
           <Key>
             <PropertyRef Name="id" />
@@ -1385,6 +1404,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
         </Association>
         <EntityContainer Name="VrpCrmIntegrationModelStoreContainer">
           <EntitySet Name="app_column" EntityType="Self.app_column" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="app_crm_field" EntityType="Self.app_crm_field" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_package" EntityType="Self.app_package" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_table" EntityType="Self.app_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_user" EntityType="Self.app_user" Schema="dbo" store:Type="Tables" />
@@ -2584,6 +2604,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <EntitySet Name="TodayRunView" EntityType="VrpCrmIntegrationModel.TodayRunView" />
           <EntitySet Name="MonitoringView" EntityType="VrpCrmIntegrationModel.MonitoringView" />
           <EntitySet Name="app_package" EntityType="VrpCrmIntegrationModel.app_package" />
+          <EntitySet Name="app_crm_field" EntityType="VrpCrmIntegrationModel.app_crm_field" />
         </EntityContainer>
         <EntityType Name="app_column">
           <Key>
@@ -3872,6 +3893,25 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="package_description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="app_crm_field">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="crm_entity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="crm_section" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="label" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="batch_integration_field" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="crm_field" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="db2_field" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="web_service_field" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="is_used_on_crm" Type="Boolean" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updated_by" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="updated_on" Type="DateTime" Precision="3" />
+          <Property Name="tags" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="is_web_service_field" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5152,6 +5192,26 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
                 <ScalarProperty Name="package_type" ColumnName="package_type" />
                 <ScalarProperty Name="package_name" ColumnName="package_name" />
                 <ScalarProperty Name="level_id" ColumnName="level_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_crm_field">
+            <EntityTypeMapping TypeName="VrpCrmIntegrationModel.app_crm_field">
+              <MappingFragment StoreEntitySet="app_crm_field">
+                <ScalarProperty Name="is_web_service_field" ColumnName="is_web_service_field" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="updated_on" ColumnName="updated_on" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="is_used_on_crm" ColumnName="is_used_on_crm" />
+                <ScalarProperty Name="web_service_field" ColumnName="web_service_field" />
+                <ScalarProperty Name="db2_field" ColumnName="db2_field" />
+                <ScalarProperty Name="crm_field" ColumnName="crm_field" />
+                <ScalarProperty Name="batch_integration_field" ColumnName="batch_integration_field" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="crm_section" ColumnName="crm_section" />
+                <ScalarProperty Name="crm_entity" ColumnName="crm_entity" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<VerifyCRM.Models.app_crm_field>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateField")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.label)
+        </th>
+        
+        
+        <th>
+            @Html.DisplayNameFor(model => model.is_web_service_field)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_used_on_crm)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.tags)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.label)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.is_web_service_field)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.is_used_on_crm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tags)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditField", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+        </td>
+    </tr>
+    <tr style="display:none">
+        <th>
+            @Html.DisplayNameFor(model => model.batch_integration_field)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.crm_field)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.db2_field)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.remarks)
+        </th>
+    </tr>
+
+    <tr style="display:none">
+
+
+
+
+        <td>
+            <small class="text-muted">@Html.DisplayFor(modelItem => item.crm_entity)</small>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.batch_integration_field)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.crm_field)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.db2_field)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.remarks)
+        </td>
+
+
+    </tr>
+
+
+}
+
+</table>

@@ -337,6 +337,7 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Helpers\backupdata.zip" />
     <Content Include="Helpers\backup2.zip" />
+    <Content Include="Helpers\app_test.zip" />
     <None Include="Properties\PublishProfiles\Dwh-appsdev.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\HighCharts.js" />

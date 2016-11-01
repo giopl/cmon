@@ -77,7 +77,7 @@ namespace VerifyCRM.Models
                     case 2: value = "warning"; break;
                     case 3: value = "success"; break;
                      //case "1 - Stared": value = "incomplete"; break;
-                    case -99: value = "danger"; break;
+                    case -9: value = "danger"; break;
 
                     default:
                         break;

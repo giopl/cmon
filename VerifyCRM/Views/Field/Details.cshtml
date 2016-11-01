@@ -1,4 +1,4 @@
-﻿@model VerifyCRM.Models.app_crm_field
+﻿@model VerifyCRM.Models.app_field
 
 @{
     ViewBag.Title = "Details";
@@ -7,47 +7,111 @@
 <h2>Details</h2>
 
 <div>
-    <h4>app_crm_field</h4>
+    <h4>app_field</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.crm_entity)
+            @Html.DisplayNameFor(model => model.client_type)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.crm_entity)
+            @Html.DisplayFor(model => model.client_type)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.crm_section)
+            @Html.DisplayNameFor(model => model.crm_view)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.crm_section)
+            @Html.DisplayFor(model => model.crm_view)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.label)
+            @Html.DisplayNameFor(model => model.tab_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.label)
+            @Html.DisplayFor(model => model.tab_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.batch_integration_field)
+            @Html.DisplayNameFor(model => model.section_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.batch_integration_field)
+            @Html.DisplayFor(model => model.section_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.crm_field)
+            @Html.DisplayNameFor(model => model.subsection_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.crm_field)
+            @Html.DisplayFor(model => model.subsection_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.field_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.field_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_live)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_live)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_batch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_batch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.core_table)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.core_table)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.core_field)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.core_field)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vrp_table)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vrp_table)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vrp_field)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vrp_field)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.db2_table)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.db2_table)
         </dd>
 
         <dt>
@@ -59,19 +123,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.web_service_field)
+            @Html.DisplayNameFor(model => model.db2_rule)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.web_service_field)
+            @Html.DisplayFor(model => model.db2_rule)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.is_used_on_crm)
+            @Html.DisplayNameFor(model => model.webservice_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.is_used_on_crm)
+            @Html.DisplayFor(model => model.webservice_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_null)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_null)
         </dd>
 
         <dt>
@@ -104,6 +176,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.tags)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.source_system)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.source_system)
         </dd>
 
     </dl>

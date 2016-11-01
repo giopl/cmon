@@ -40,6 +40,34 @@
           <Property Name="tags" Type="nvarchar" MaxLength="1000" />
           <Property Name="is_web_service_field" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="app_field">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="client_type" Type="int" />
+          <Property Name="crm_view" Type="int" />
+          <Property Name="tab_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="section_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="subsection_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="field_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="is_live" Type="bit" Nullable="false" />
+          <Property Name="is_batch" Type="bit" Nullable="false" />
+          <Property Name="core_table" Type="nvarchar" MaxLength="100" />
+          <Property Name="core_field" Type="nvarchar" MaxLength="200" />
+          <Property Name="vrp_table" Type="nvarchar" MaxLength="100" />
+          <Property Name="vrp_field" Type="nvarchar" MaxLength="200" />
+          <Property Name="db2_table" Type="nvarchar" MaxLength="50" />
+          <Property Name="db2_field" Type="nvarchar" MaxLength="150" />
+          <Property Name="db2_rule" Type="nvarchar" MaxLength="3000" />
+          <Property Name="webservice_name" Type="nvarchar" MaxLength="200" />
+          <Property Name="is_null" Type="bit" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar(max)" />
+          <Property Name="updated_by" Type="nvarchar" MaxLength="30" />
+          <Property Name="updated_on" Type="datetime" />
+          <Property Name="tags" Type="nvarchar" MaxLength="1000" />
+          <Property Name="source_system" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="app_package">
           <Key>
             <PropertyRef Name="id" />
@@ -1405,6 +1433,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
         <EntityContainer Name="VrpCrmIntegrationModelStoreContainer">
           <EntitySet Name="app_column" EntityType="Self.app_column" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_crm_field" EntityType="Self.app_crm_field" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="app_field" EntityType="Self.app_field" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_package" EntityType="Self.app_package" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_table" EntityType="Self.app_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_user" EntityType="Self.app_user" Schema="dbo" store:Type="Tables" />
@@ -2605,6 +2634,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <EntitySet Name="MonitoringView" EntityType="VrpCrmIntegrationModel.MonitoringView" />
           <EntitySet Name="app_package" EntityType="VrpCrmIntegrationModel.app_package" />
           <EntitySet Name="app_crm_field" EntityType="VrpCrmIntegrationModel.app_crm_field" />
+          <EntitySet Name="app_field" EntityType="VrpCrmIntegrationModel.app_field" />
         </EntityContainer>
         <EntityType Name="app_column">
           <Key>
@@ -3912,6 +3942,34 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="tags" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="is_web_service_field" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="app_field">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="client_type" Type="Int32" />
+          <Property Name="crm_view" Type="Int32" />
+          <Property Name="tab_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="section_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="subsection_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="field_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="is_live" Type="Boolean" Nullable="false" />
+          <Property Name="is_batch" Type="Boolean" Nullable="false" />
+          <Property Name="core_table" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="core_field" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="vrp_table" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="vrp_field" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="db2_table" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="db2_field" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="db2_rule" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="webservice_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="is_null" Type="Boolean" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updated_by" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="updated_on" Type="DateTime" Precision="3" />
+          <Property Name="tags" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="source_system" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5212,6 +5270,35 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
                 <ScalarProperty Name="label" ColumnName="label" />
                 <ScalarProperty Name="crm_section" ColumnName="crm_section" />
                 <ScalarProperty Name="crm_entity" ColumnName="crm_entity" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_field">
+            <EntityTypeMapping TypeName="VrpCrmIntegrationModel.app_field">
+              <MappingFragment StoreEntitySet="app_field">
+                <ScalarProperty Name="source_system" ColumnName="source_system" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="updated_on" ColumnName="updated_on" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="is_null" ColumnName="is_null" />
+                <ScalarProperty Name="webservice_name" ColumnName="webservice_name" />
+                <ScalarProperty Name="db2_rule" ColumnName="db2_rule" />
+                <ScalarProperty Name="db2_field" ColumnName="db2_field" />
+                <ScalarProperty Name="db2_table" ColumnName="db2_table" />
+                <ScalarProperty Name="vrp_field" ColumnName="vrp_field" />
+                <ScalarProperty Name="vrp_table" ColumnName="vrp_table" />
+                <ScalarProperty Name="core_field" ColumnName="core_field" />
+                <ScalarProperty Name="core_table" ColumnName="core_table" />
+                <ScalarProperty Name="is_batch" ColumnName="is_batch" />
+                <ScalarProperty Name="is_live" ColumnName="is_live" />
+                <ScalarProperty Name="field_name" ColumnName="field_name" />
+                <ScalarProperty Name="subsection_name" ColumnName="subsection_name" />
+                <ScalarProperty Name="section_name" ColumnName="section_name" />
+                <ScalarProperty Name="tab_name" ColumnName="tab_name" />
+                <ScalarProperty Name="crm_view" ColumnName="crm_view" />
+                <ScalarProperty Name="client_type" ColumnName="client_type" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

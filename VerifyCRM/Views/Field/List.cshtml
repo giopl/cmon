@@ -1,0 +1,102 @@
+﻿@model IEnumerable<VerifyCRM.Models.app_field>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.client_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.crm_view)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tab_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.section_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subsection_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.field_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_live)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_batch)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.is_null)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.remarks)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.tags)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.source_system)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.client_type_desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.crm_view_desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tab_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.section_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subsection_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.field_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.is_live)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.is_batch)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.is_null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.remarks)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.tags)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.source_system)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

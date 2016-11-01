@@ -117,8 +117,11 @@ namespace VerifyCRM.Controllers
                 }    
             }
 
+            if (dts.Length>0)
             dts.Length--;
+            if (records.Length > 0)
             records.Length--;
+            if (duration.Length > 0)
             duration.Length--;
 
             ViewBag.RunDates = dts.ToString();

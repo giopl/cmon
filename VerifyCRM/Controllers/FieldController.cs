@@ -17,15 +17,14 @@ namespace VerifyCRM.Controllers
         // GET: Field
         public ActionResult Index()
         {
-            return RedirectToAction("CRMFields");
+            return RedirectToAction("List");
         }
 
 
-        public ActionResult CRMFields()
+        public ActionResult List()
         {
-            return View(db.app_crm_field.ToList());
+            return View(db.app_field.ToList());
         }
-
 
         private string GetUser()
         {
@@ -42,6 +41,7 @@ namespace VerifyCRM.Controllers
             return _user;
         }
 
+
         // GET: Field/Details/5
         public ActionResult Details(int? id)
         {
@@ -49,16 +49,16 @@ namespace VerifyCRM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            app_crm_field app_crm_field = db.app_crm_field.Find(id);
-            if (app_crm_field == null)
+            app_field app_field = db.app_field.Find(id);
+            if (app_field == null)
             {
                 return HttpNotFound();
             }
-            return View(app_crm_field);
+            return View(app_field);
         }
 
         // GET: Field/Create
-        public ActionResult CreateField()
+        public ActionResult Create()
         {
             return View();
         }
@@ -68,37 +68,34 @@ namespace VerifyCRM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateField([Bind(Include = "id,crm_entity,crm_section,label,batch_integration_field,crm_field,db2_field,web_service_field,is_used_on_crm,remarks,updated_by,updated_on,tags,is_web_service_field")] app_crm_field app_crm_field)
+        public ActionResult Create([Bind(Include = "id,client_type,crm_view,tab_name,section_name,subsection_name,field_name,is_live,is_batch,core_table,core_field,vrp_table,vrp_field,db2_table,db2_field,db2_rule,webservice_name,is_null,remarks,updated_by,updated_on,tags,source_system")] app_field app_field)
         {
             if (ModelState.IsValid)
             {
-                
 
-                app_crm_field.updated_by = GetUser();
-                app_crm_field.updated_on = DateTime.Now;
-
-
-                db.app_crm_field.Add(app_crm_field);
+                app_field.updated_by = GetUser();
+                app_field.updated_on = DateTime.Now;
+                db.app_field.Add(app_field);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(app_crm_field);
+            return View(app_field);
         }
 
         // GET: Field/Edit/5
-        public ActionResult EditField(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            app_crm_field app_crm_field = db.app_crm_field.Find(id);
-            if (app_crm_field == null)
+            app_field app_field = db.app_field.Find(id);
+            if (app_field == null)
             {
                 return HttpNotFound();
             }
-            return View(app_crm_field);
+            return View(app_field);
         }
 
         // POST: Field/Edit/5
@@ -106,21 +103,20 @@ namespace VerifyCRM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditField([Bind(Include = "id,crm_entity,crm_section,label,batch_integration_field,crm_field,db2_field,web_service_field,is_used_on_crm,remarks,updated_by,updated_on,tags,is_web_service_field")] app_crm_field app_crm_field)
+        public ActionResult Edit([Bind(Include = "id,client_type,crm_view,tab_name,section_name,subsection_name,field_name,is_live,is_batch,core_table,core_field,vrp_table,vrp_field,db2_table,db2_field,db2_rule,webservice_name,is_null,remarks,updated_by,updated_on,tags,source_system")] app_field app_field)
         {
             if (ModelState.IsValid)
             {
 
 
-                app_crm_field.updated_by = GetUser();
-                app_crm_field.updated_on = DateTime.Now;
+                app_field.updated_by = GetUser();
+                app_field.updated_on = DateTime.Now;
 
-
-                db.Entry(app_crm_field).State = EntityState.Modified;
+                db.Entry(app_field).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(app_crm_field);
+            return View(app_field);
         }
 
         // GET: Field/Delete/5
@@ -130,12 +126,12 @@ namespace VerifyCRM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            app_crm_field app_crm_field = db.app_crm_field.Find(id);
-            if (app_crm_field == null)
+            app_field app_field = db.app_field.Find(id);
+            if (app_field == null)
             {
                 return HttpNotFound();
             }
-            return View(app_crm_field);
+            return View(app_field);
         }
 
         // POST: Field/Delete/5
@@ -143,8 +139,8 @@ namespace VerifyCRM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            app_crm_field app_crm_field = db.app_crm_field.Find(id);
-            db.app_crm_field.Remove(app_crm_field);
+            app_field app_field = db.app_field.Find(id);
+            db.app_field.Remove(app_field);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -136,6 +136,9 @@
     <Compile Include="Models\app_crm_field.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\app_field.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\app_package.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -248,6 +251,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Meta\app_crm_fieldMeta.cs" />
+    <Compile Include="Models\Meta\app_fieldMeta.cs" />
     <Compile Include="Models\Meta\app_tableMeta.cs" />
     <Compile Include="Models\Meta\MonitoringMeta.cs" />
     <Compile Include="Models\Meta\MonitoringViewMeta.cs" />
@@ -386,11 +390,11 @@
     <Content Include="Views\Package\Details.cshtml" />
     <Content Include="Views\Package\EditPackage.cshtml" />
     <Content Include="Views\Package\Packages.cshtml" />
-    <Content Include="Views\Field\CreateField.cshtml" />
+    <Content Include="Views\Field\Create.cshtml" />
     <Content Include="Views\Field\Delete.cshtml" />
     <Content Include="Views\Field\Details.cshtml" />
-    <Content Include="Views\Field\EditField.cshtml" />
-    <Content Include="Views\Field\CRMFields.cshtml" />
+    <Content Include="Views\Field\Edit.cshtml" />
+    <Content Include="Views\Field\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

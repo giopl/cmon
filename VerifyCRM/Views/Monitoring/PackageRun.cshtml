@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<VerifyCRM.Models.MonitoringView>
-
+@using utils = VerifyCRM.Helpers.Utils
 @{
     ViewBag.Title = "Package Run";
 
@@ -26,87 +26,97 @@
     @*<div id="container"></div>*@
     <div id="container2"></div>
 </p>
-<table class="table">
-    <tr>
-        
-        <th>
-            Rundate
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Duration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompletedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>Row Count</th>
-        <th>
-            @Html.DisplayNameFor(model => model.Errors)
-            
-        </th>
-        
-        
-    </tr>
+<table class="table" id="dtable">
+    <thead>
 
-@foreach (var item in Model.OrderByDescending(x=>x.StartedOn)) {
-    <tr>
-        
-        <td>
-            
-            @item.StartedOn.Value.ToString("ddd dd-MMM-yy")
 
-        </td>
-        <td>
-            @if (item.statusCode == 2)
-            {
-                @item.DurationToNow
+        <tr>
 
-            }
-            else
-            {
-            @Html.DisplayFor(modelItem => item.Duration)
-            }
+            <th>
+                Rundate
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompletedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>Row Count</th>
+            <th>
+                @Html.DisplayNameFor(model => model.throughput)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Errors)
+            </th>
 
-            
-        </td>
-        <td>
-            @item.StartedOn.Value.ToString("HH:mm:ss")
-        </td>
-        <td>
-            @if(item.CompletedOn.HasValue)
-            {
-                @item.CompletedOn.Value.ToString("HH:mm:ss")
-            }
-            
-            
-        </td>
-        <td>
 
-            @if (!item.CompletedOn.HasValue && item.StartedOn < DateTime.Now.Date)
-            {
-                <span class="label label-default">8 - Incomplete</span>
-            }
-            else
-            {
-                <span class="label label-@(item.StatusLabel)">
-                    @Html.DisplayFor(modelItem => item.Status)
-                </span>
-            }
-            
-        </td>
-        <td>@item.RecordCount</td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Errors)
-        </td>
-        
-    </tr>
-}
+        </tr>
+    </thead>
+    <tbody>
 
+
+        @foreach (var item in Model.OrderByDescending(x => x.StartedOn))
+        {
+            <tr>
+
+                <td data-order="@utils.ConvertDateToInt(item.StartedOn.Value)">
+
+                    @item.StartedOn.Value.ToString("ddd dd-MMM-yy")
+
+                </td>
+                <td>
+                    @if (item.statusCode == 2)
+                    {
+                        @item.DurationToNow
+
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Duration)
+                    }
+
+
+                </td>
+                <td>
+                    @item.StartedOn.Value.ToString("HH:mm:ss")
+                </td>
+                <td>
+                    @if (item.CompletedOn.HasValue)
+                    {
+                        @item.CompletedOn.Value.ToString("HH:mm:ss")
+                    }
+
+
+                </td>
+                <td>
+
+                    @if (!item.CompletedOn.HasValue && item.StartedOn < DateTime.Now.Date)
+                    {
+                        <span class="label label-default">8 - Incomplete</span>
+                    }
+                    else
+                    {
+                        <span class="label label-@(item.StatusLabel)">
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </span>
+                    }
+
+                </td>
+                <td>@item.RecordCount</td>
+                <td>@item.throughput</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Errors)
+                </td>
+
+            </tr>
+        }
+    </tbody>
 </table>
 
 
@@ -149,7 +159,22 @@
 
 
 @section scripts {
+<script type="text/javascript" src="@Url.Content("~/Scripts/datatables.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/HighCharts.js")"></script>
+
+
+
     <script>
+
+        $(document).ready(function () {
+
+            $('#dtable').DataTable({
+                "pageLength": 50,
+                "order": [[0, "desc"]]
+            });
+        });
+
+
 
         $(function () {
             $('#container').highcharts({
@@ -213,6 +238,6 @@
             });
         });
 
-    </script>
+</script>
 
 }

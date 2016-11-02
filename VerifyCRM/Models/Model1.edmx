@@ -68,6 +68,15 @@
           <Property Name="tags" Type="nvarchar" MaxLength="1000" />
           <Property Name="source_system" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="app_option">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="field" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="value" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="app_package">
           <Key>
             <PropertyRef Name="id" />
@@ -1418,7 +1427,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="IsLastRun" Type="int" />
           <Property Name="Status" Type="varchar" MaxLength="42" />
         </EntityType>
-        <Association Name="FK__app_colum__table__0682EC34">
+        <Association Name="FK__app_colum__table__2B0A656D">
           <End Role="app_table" Type="Self.app_table" Multiplicity="1" />
           <End Role="app_column" Type="Self.app_column" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1434,6 +1443,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <EntitySet Name="app_column" EntityType="Self.app_column" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_crm_field" EntityType="Self.app_crm_field" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_field" EntityType="Self.app_field" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="app_option" EntityType="Self.app_option" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_package" EntityType="Self.app_package" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_table" EntityType="Self.app_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_user" EntityType="Self.app_user" Schema="dbo" store:Type="Tables" />
@@ -2562,7 +2572,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
     [TodayRunView].[Status] AS [Status]
     FROM [dbo].[TodayRunView] AS [TodayRunView]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__app_colum__table__0682EC34" Association="Self.FK__app_colum__table__0682EC34">
+          <AssociationSet Name="FK__app_colum__table__2B0A656D" Association="Self.FK__app_colum__table__2B0A656D">
             <End Role="app_table" EntitySet="app_table" />
             <End Role="app_column" EntitySet="app_column" />
           </AssociationSet>
@@ -2635,6 +2645,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <EntitySet Name="app_package" EntityType="VrpCrmIntegrationModel.app_package" />
           <EntitySet Name="app_crm_field" EntityType="VrpCrmIntegrationModel.app_crm_field" />
           <EntitySet Name="app_field" EntityType="VrpCrmIntegrationModel.app_field" />
+          <EntitySet Name="app_option" EntityType="VrpCrmIntegrationModel.app_option" />
         </EntityContainer>
         <EntityType Name="app_column">
           <Key>
@@ -3970,6 +3981,15 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="tags" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="source_system" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="app_option">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="field" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="value" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5299,6 +5319,16 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
                 <ScalarProperty Name="tab_name" ColumnName="tab_name" />
                 <ScalarProperty Name="crm_view" ColumnName="crm_view" />
                 <ScalarProperty Name="client_type" ColumnName="client_type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_option">
+            <EntityTypeMapping TypeName="VrpCrmIntegrationModel.app_option">
+              <MappingFragment StoreEntitySet="app_option">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="field" ColumnName="field" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

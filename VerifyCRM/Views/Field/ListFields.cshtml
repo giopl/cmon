@@ -1,0 +1,95 @@
+﻿@model IEnumerable<VerifyCRM.Models.app_field>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>CRM Fields</h2>
+
+<p>
+    <a href="@Url.Action("CreateField")"><span class="fa fa-plus"></span>&nbsp;new</a>
+</p>
+<table class="table table-striped" id="datatable">
+    <thead>
+        <tr>
+            <th>
+                Field
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Tab
+            </th>
+            <th>
+                Section
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_live)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_batch)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.is_null)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.source_system)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.field_name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.client_type_desc) @Html.DisplayFor(modelItem => item.crm_view_desc)
+                </td>
+                <td>
+                    
+                    @if (!string.IsNullOrWhiteSpace(item.tab_name))
+                    {
+                        @item.tab_name.ToUpper();
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.section_name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.is_live)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.is_batch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.is_null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.source_system)
+                </td>
+                <td>
+                    <a href="@Url.Action("EditField", new { id = item.id})"><span class="fa fa-edit"></span></a>&nbsp;&bull;&nbsp;<a href="@Url.Action("Delete", new { id = item.id})"><span class="fa fa-trash"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+ 
+<script type="text/javascript" src="@Url.Content("~/Scripts/datatables.js")"></script>
+<script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                "pageLength": 50
+            });
+        });
+</script>
+
+}

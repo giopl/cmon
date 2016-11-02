@@ -21,12 +21,13 @@ namespace VerifyCRM
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/HighCharts.js",
+                      //"~/Scripts/HighCharts.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.css",
+                      "~/Content/datatables.css",
                       "~/Content/site.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,

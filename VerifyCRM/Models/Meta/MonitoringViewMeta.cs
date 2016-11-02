@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -51,7 +52,36 @@ namespace VerifyCRM.Models
         {
             get
             {
-                return Status == null ? "1 - Not Started" : Status;
+                var _resp = Status == null ? "1 - Not Started" : Status;
+                if(statusCode==8)
+                {
+                    _resp = "8 - Incomplete";
+                }
+
+                return _resp;
+            }
+        }
+
+        [DisplayName("Througput")]
+        public int throughput
+        {
+            get
+            {
+                int result = 0;
+
+
+                if(CompletedOn.HasValue && StartedOn.HasValue)
+                {
+                    TimeSpan seconds = CompletedOn.Value - StartedOn.Value;
+
+                    if (seconds.TotalSeconds > 0)
+                    {
+                        result = Convert.ToInt32(RecordCount) / (int)seconds.TotalSeconds;
+                    }
+                }
+                
+                
+                return result;
             }
         }
 
@@ -59,6 +89,12 @@ namespace VerifyCRM.Models
             get
             {
                 var code = Convert.ToInt32(Status.Substring(0, 2));
+
+                if(code==2 && RunDate <= DateTime.Now.Date.AddDays(1))
+                {
+                    code = 8;
+                }
+
                 return code;
 
             }
@@ -76,7 +112,7 @@ namespace VerifyCRM.Models
                     case 1: value = "info"; break;
                     case 2: value = "warning"; break;
                     case 3: value = "success"; break;
-                     //case "1 - Stared": value = "incomplete"; break;
+                    case 8: value = "default"; break;
                     case -9: value = "danger"; break;
 
                     default:

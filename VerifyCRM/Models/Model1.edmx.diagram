@@ -54,6 +54,7 @@
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_package" Width="1.5" PointX="24.375" PointY="14.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_crm_field" Width="1.5" PointX="24.375" PointY="24.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_field" Width="1.5" PointX="12.375" PointY="25.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_option" Width="1.5" PointX="26.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

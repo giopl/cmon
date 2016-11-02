@@ -17,59 +17,69 @@
     @*<div id="container"></div>*@
 <div id="container2"></div>
 
-<table class="table">
-    <tr>
-        <th>
-            Rundate
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.started)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.completed)
-        </th>
+<table class="table" id="dtable">
+    <thead>
+        <tr>
+            <th>
+                Rundate
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.started)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.completed)
+            </th>
 
-        <th>Duration</th>
-        <th>
-            @Html.DisplayNameFor(model => model.num_errors)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.numRows)
-        </th>
-        
-    </tr>
+            <th>Duration</th>
+            <th>
+                @Html.DisplayNameFor(model => model.num_errors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numRows)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.throughput)
+            </th>
 
-@foreach (var item in Model.OrderByDescending(x=>x.rundate)) {
-    <tr>
-        <td>
-            <a href="@Url.Action("DateRun", new  { id = utils.ConvertDateToInt(item.rundate) })">
-                @item.rundate.ToString("ddd dd-MMM-yy")
-            </a>
-        </td>
-        <td>
-            @item.started.Value.ToString("HH:mm:ss")
-        </td>
-        <td>
-            @item.completed.Value.ToString("HH:mm:ss")
-        </td>
-        <td>
-            
-            <span class="text-@(item.duration_seconds < 7200 ? "info" : (item.duration_seconds > 14400? "danger" : ""))">
-                @Html.DisplayFor(modelItem => item.DurationStr)
-            </span>
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.num_errors)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.numRows)
-        </td>
-        
-    </tr>
-}
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderByDescending(x => x.rundate))
+        {
+            <tr>
+                <td data-order="@utils.ConvertDateToInt(item.rundate)">
+                    <a href="@Url.Action("DateRun", new  { id = utils.ConvertDateToInt(item.rundate) })">
+                        @item.rundate.ToString("ddd dd-MMM-yy")
+                    </a>
+                </td>
+                <td>
+                    @item.started.Value.ToString("HH:mm:ss")
+                </td>
+                <td>
+                    @item.completed.Value.ToString("HH:mm:ss")
+                </td>
+                <td data-order="@item.duration_seconds">
 
+                    <span class="text-@(item.duration_seconds < 7200 ? "info" : (item.duration_seconds > 14400? "danger" : ""))">
+                        @Html.DisplayFor(modelItem => item.DurationStr)
+                    </span>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.num_errors)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.numRows)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.throughput)
+                </td>
+
+            </tr>
+        }
+    </tbody>
 </table>
 
 
@@ -102,7 +112,19 @@
 </table>
 
 @section scripts {
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/datatables.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/HighCharts.js")"></script>
+
     <script>
+
+        $(document).ready(function () {
+
+            $('#dtable').DataTable({
+                "pageLength": 50,
+                "order": [[0, "desc"]]
+            });
+        });
 
         $(function () {
             $('#container').highcharts({

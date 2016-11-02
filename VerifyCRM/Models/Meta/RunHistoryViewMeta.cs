@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -41,6 +42,21 @@ namespace VerifyCRM.Models
                 }
 
                 return str;
+            }
+        }
+
+
+        [DisplayName("Througput")]
+        public int throughput
+        {
+            get
+            {
+                int result = 0;
+                if(duration_seconds.HasValue && duration_seconds.Value > 0)
+                {
+                    result = Convert.ToInt32(numRows) / duration_seconds.Value;
+                }
+                return result;
             }
         }
 

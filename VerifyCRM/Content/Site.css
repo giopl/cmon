@@ -47,3 +47,7 @@ textarea {
 .navbar-inverse .navbar-text {
     color: #fff;
 }
+
+
+.border-red { border:1px solid red;}
+.border-green { border:1px solid green;}

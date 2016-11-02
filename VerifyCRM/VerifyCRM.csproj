@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -129,6 +130,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\OptionItem.cs" />
     <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Models\app_column.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -137,6 +139,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\app_field.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\app_option.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\app_package.cs">
@@ -252,6 +257,7 @@
     </Compile>
     <Compile Include="Models\Meta\app_crm_fieldMeta.cs" />
     <Compile Include="Models\Meta\app_fieldMeta.cs" />
+    <Compile Include="Models\Meta\app_packageMeta.cs" />
     <Compile Include="Models\Meta\app_tableMeta.cs" />
     <Compile Include="Models\Meta\MonitoringMeta.cs" />
     <Compile Include="Models\Meta\MonitoringViewMeta.cs" />
@@ -302,6 +308,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datatables.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\XMLFile1.xml" />
@@ -340,6 +347,8 @@
     <Content Include="Helpers\app_test.zip" />
     <None Include="Properties\PublishProfiles\Dwh-appsdev.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\datatables.js" />
+    <Content Include="Scripts\datatables.min.js" />
     <Content Include="Scripts\HighCharts.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -391,11 +400,11 @@
     <Content Include="Views\Package\Details.cshtml" />
     <Content Include="Views\Package\EditPackage.cshtml" />
     <Content Include="Views\Package\Packages.cshtml" />
-    <Content Include="Views\Field\Create.cshtml" />
     <Content Include="Views\Field\Delete.cshtml" />
     <Content Include="Views\Field\Details.cshtml" />
-    <Content Include="Views\Field\Edit.cshtml" />
-    <Content Include="Views\Field\List.cshtml" />
+    <Content Include="Views\Field\EditField.cshtml" />
+    <Content Include="Views\Field\ListFields.cshtml" />
+    <Content Include="Views\Field\CreateField.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

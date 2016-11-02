@@ -9,7 +9,7 @@
 
     var run = Model.FirstOrDefault();
 
-    var isRunning = Model.Where(x => x.statusCode < 3).Count() > 1;
+    var isRunning = Model.Where(x => x.statusCode < 3 && x.RunDate == DateTime.Now.Date).Count() > 1  ;
 
 
     var notStarted = Model.Where(x => x.statusCode > 1).Count() == 0;

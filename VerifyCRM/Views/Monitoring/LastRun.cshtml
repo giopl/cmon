@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<VerifyCRM.Models.MonitoringView>
-
+@using utils = VerifyCRM.Helpers.Utils
 @{
     ViewBag.Title = "Last Run";
 
@@ -30,65 +30,86 @@
     Status : <span class="label label-@(isRunning?"warning":"success")"> @(isRunning ? "Running" : "Completed")</span>&nbsp;&nbsp;
     Running Time :  <span class="label label-info">@hours:@mins:00</span>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LevelName)
-        </th>
-        
-        
-        <th>
-            @Html.DisplayNameFor(model => model.Duration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompletedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Errors)
-        </th>
-        
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <a href="@Url.Action("PackageRun", new { id = item.LevelId })">@Html.DisplayFor(modelItem => item.LevelName)</a>
-        </td>
-        
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Duration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompletedOn)
-        </td>
-        <td>
-            <span class="label label-@(item.StatusLabel)">
-                @Html.DisplayFor(modelItem => item.Status)
-            </span>
-        </td>
-        <td>
-            @if(item.Errors>0)
-            {
-                <a href="@Url.Action("PackageError", new { id = item.LevelId, start = item.StartedOn, end = item.CompletedOn })">
-                    <span class="label label-danger">@Html.DisplayFor(modelItem => item.Errors)</span>                    
-                </a>
-            }
+<table class="table" id="datatable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LevelName)
+            </th>
 
 
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompletedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Errors)
+            </th>
 
-        </td>
-        
-    </tr>
-}
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("PackageRun", new { id = item.LevelId })">@Html.DisplayFor(modelItem => item.LevelName)</a>
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompletedOn)
+                </td>
+                <td>
+                    <span class="label label-@(item.StatusLabel)">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </span>
+                </td>
+                <td>
+                    @if (item.Errors > 0)
+                    {
+                        <a href="@Url.Action("PackageError", new { id = item.LevelId, start = item.StartedOn, end = item.CompletedOn })">
+                            <span class="label label-danger">@Html.DisplayFor(modelItem => item.Errors)</span>
+                        </a>
+                    }
+
+
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
 
 </table>
+
+@section scripts {
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/datatables.js")"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#datatable').DataTable({
+                "pageLength": 50
+                });
+
+        });
+
+    </script>
+}

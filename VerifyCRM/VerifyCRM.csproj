@@ -345,6 +345,7 @@
     <Content Include="Helpers\backupdata.zip" />
     <Content Include="Helpers\backup2.zip" />
     <Content Include="Helpers\app_test.zip" />
+    <Content Include="Helpers\7. Data Concurrency.zip" />
     <None Include="Properties\PublishProfiles\Dwh-appsdev.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\datatables.js" />

@@ -183,6 +183,7 @@
     <Build Include="dbo\Stored Procedures\app_update_objects.sql" />
     <Build Include="dbo\Tables\app_crm_field.sql" />
     <Build Include="dbo\Tables\app_field.sql" />
+    <Build Include="dbo\Tables\app_option.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\insert scripts\app_option_inserts.sql" />

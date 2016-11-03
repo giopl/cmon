@@ -9,7 +9,7 @@
     <li><a href="@Url.Action("RunHistory","Monitoring")">Home</a></li>
     <li><a href="@Url.Action("Index","Field")">CRM Fields</a></li>
    
-    <li class="active">Edit Field <span class="text-info">@Model.client_type_desc > @Model.tab_name.ToUpper() > @(string.IsNullOrWhiteSpace(Model.section_name) ? "" : Model.section_name + " > ")  @Model.field_name</span> </li>
+    <li class="active">Edit Field <strong>@Model.client_type_desc > @Model.tab_name.ToUpper() > @(string.IsNullOrWhiteSpace(Model.section_name) ? "" : Model.section_name + " > ")  @Model.field_name</strong> </li>
 </ol>
 
 

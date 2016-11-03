@@ -45,7 +45,10 @@
         {
             <tr>
                 <td>
+                    <a href="@Url.Action("Details", new { id = item.id })">
+
                     @Html.DisplayFor(modelItem => item.field_name)
+                    </a>
                 </td>
 
                 <td>

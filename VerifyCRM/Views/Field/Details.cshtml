@@ -4,191 +4,218 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Field Detail</h2>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("RunHistory","Monitoring")">Home</a></li>
+    <li><a href="@Url.Action("Index","Field")">CRM Fields</a></li>
 
-<div>
-    <h4>app_field</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.client_type)
-        </dt>
+    <li class="active"><strong>@Model.client_type_desc > @Model.tab_name.ToUpper() > @(string.IsNullOrWhiteSpace(Model.section_name) ? "" : Model.section_name + " > ")  @Model.field_name</strong> </li>
+</ol>
 
-        <dd>
-            @Html.DisplayFor(model => model.client_type)
-        </dd>
+<div  class="row">
+    <div class="col-md-6">        
+        <span class="label label-danger">@Model.client_type_desc @Model.crm_view_desc</span> @Model.tab_name   
+    </div>
+  
+    <div class="col-md-6 text-right">
+        <a href="@Url.Action("EditField", new {id = Model.id })">Edit field</a>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.crm_view)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.crm_view)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tab_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tab_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.section_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.section_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.subsection_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.subsection_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.field_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.field_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.is_live)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.is_live)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.is_batch)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.is_batch)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.core_table)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.core_table)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.core_field)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.core_field)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.vrp_table)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.vrp_table)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.vrp_field)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.vrp_field)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.db2_table)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.db2_table)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.db2_field)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.db2_field)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.db2_rule)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.db2_rule)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.webservice_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.webservice_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.is_null)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.is_null)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.remarks)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.remarks)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.updated_by)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.updated_by)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.updated_on)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.updated_on)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tags)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tags)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.source_system)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.source_system)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<hr />
+<h4>Field Details</h4>
+<div class="row">
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.section_name):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.section_name)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.subsection_name):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.subsection_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.field_name):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.field_name)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.remarks):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.remarks)
+            </dd>
+
+        </dl>
+
+
+</div>
+
+    <div class="col-md-6">
+        @if(Model.is_live)
+        {
+              <span class="label label-success">Live</span><br />
+        }
+        @if (Model.is_batch)
+        {
+            <span class="label label-info">Batch</span><br />
+        }
+        @if (Model.is_null)
+        {
+            <span class="label label-default">Null</span><br />
+        }
+        </div>
+    </div>
+
+<hr />
+
+<h4>Mapping Details</h4>
+<div class="row">
+    <div class="col-md-4">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.core_table):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.core_table)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.core_field):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.core_field)
+            </dd>
+            </dl>
+</div>
+
+    <div class="col-md-4">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.vrp_table):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.vrp_table)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.vrp_field):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.vrp_field)
+            </dd>
+        </dl>
+    </div>
+
+
+    <div class="col-md-4">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.db2_table):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.db2_table)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.db2_field):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.db2_field)
+            </dd>
+
+           
+        </dl>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.db2_rule):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.db2_rule)
+            </dd>
+            </dl>
+</div>
+</div>
+
+
+<hr />
+
+<h4>Other Details</h4>
+<div class="row">
+    <div class="col-md-4">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.updated_by)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.updated_by)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.updated_on)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.updated_on)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tags)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tags)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.source_system)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.source_system)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.webservice_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.webservice_name)
+            </dd>
+        </dl>
+    </div>
+    </div>
+
+    <p>    
+        @Html.ActionLink("Back to List", "Index")
+    </p>

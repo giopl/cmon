@@ -54,76 +54,95 @@
     }
     
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.package_name)
-            
-        </th>
+<table class="table" id="datatable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.package_name)
 
-        <th>
-            @Html.DisplayNameFor(model => model.Duration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompletedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompletedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
 
 
-        <th>
-            @Html.DisplayNameFor(model => model.Errors)
-        </th>
-        
-    </tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Errors)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <a href="@Url.Action("PackageRun", new { id = item.levelIdInt })">@Html.DisplayFor(modelItem => item.package_name)</a>
-        </td>
-       
-        <td>
-            @if(item.statusCode==2)
-            {
-                @Html.DisplayFor(modelItem => item.DurationToNow)
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("PackageRun", new { id = item.levelIdInt })">@Html.DisplayFor(modelItem => item.package_name)</a>
+                </td>
 
-            }
-            else
-            {
-                @Html.DisplayFor(modelItem => item.Duration)
-            }
+                <td>
+                    @if (item.statusCode == 2)
+                    {
+                        @Html.DisplayFor(modelItem => item.DurationToNow)
 
-            
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompletedOn)
-        </td>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Duration)
+                    }
 
-        <td>
-            <span class="label label-@(item.StatusLabel)">
-                @Html.DisplayFor(modelItem => item._Status)
-            </span>
-        </td>
 
-        <td>
-            @if (item.Errors > 0)
-            {
-                <a href="@Url.Action("PackageError", new { id = item.levelIdInt, start = item.StartedOn, end = item.CompletedOn })">
-                    <span class="label label-danger">@Html.DisplayFor(modelItem => item.Errors)</span>
-                </a>
-            }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompletedOn)
+                </td>
 
-        </td>
-        
-    </tr>
-}
+                <td>
+                    <span class="label label-@(item.StatusLabel)">
+                        @Html.DisplayFor(modelItem => item._Status)
+                    </span>
+                </td>
 
+                <td>
+                    @if (item.Errors > 0)
+                    {
+                        <a href="@Url.Action("PackageError", new { id = item.levelIdInt, start = item.StartedOn, end = item.CompletedOn })">
+                            <span class="label label-danger">@Html.DisplayFor(modelItem => item.Errors)</span>
+                        </a>
+                    }
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
 </table>
+@section scripts {
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/datatables.js")"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#datatable').DataTable({
+                "pageLength": 50
+                });
+
+        });
+
+    </script>
+}

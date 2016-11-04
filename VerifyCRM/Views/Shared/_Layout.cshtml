@@ -8,14 +8,16 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 @{
-    var username = Environment.UserName;
+    //var username = Environment.UserName;
+
+    var username = Request.LogonUserIdentity.Name;
     //var username = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 
-    if(string.IsNullOrWhiteSpace(username))
+    if(username == null)
     {
-        username = User.Identity.Name;      
+       // username = User.Identity.Name;      
     }
-    
+
     
     
     

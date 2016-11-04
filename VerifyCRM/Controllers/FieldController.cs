@@ -29,7 +29,10 @@ namespace VerifyCRM.Controllers
 
         private string GetUser()
         {
-            var _user = User.Identity.Name;
+            //var _user = User.Identity.Name;
+
+            var _user = Request.LogonUserIdentity.Name;
+
             if (_user == null)
             {
                 _user = Environment.UserName;

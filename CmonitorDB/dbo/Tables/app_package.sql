@@ -5,8 +5,10 @@
     [package_type]        NVARCHAR (20)   NULL,
     [is_active]           BIT             DEFAULT ((1)) NOT NULL,
     [package_description] NVARCHAR (2000) NULL,
-    PRIMARY KEY CLUSTERED ([id] ASC)
+    PRIMARY KEY CLUSTERED ([level_id] ASC)
 );
+
+
 
 
 

@@ -58,7 +58,11 @@
     [repayment_amount]                         MONEY          NULL,
     [repayment_frequency]                      NVARCHAR (100) NULL,
     [arrears]                                  MONEY          NULL,
+    [monthly_repaymnt_amt]                     MONEY          NULL,
+    [scheduled_next_payment_amt]               MONEY          NULL,
     [domain_name]                              NVARCHAR (16)  NULL,
     [owneridtype]                              INT            NULL
 );
+
+
 

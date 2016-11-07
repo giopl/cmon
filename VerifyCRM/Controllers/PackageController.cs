@@ -162,7 +162,9 @@ namespace VerifyCRM.Controllers
             {
                 db.app_package_table.Add(app_package_table);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                int packageid = Convert.ToInt32(app_package_table.level_id);
+                return RedirectToAction("EditPackage", new  { id = packageid });
             }
 
             ViewBag.level_id = new SelectList(db.app_package, "level_id", "package_name", app_package_table.level_id);
@@ -228,7 +230,10 @@ namespace VerifyCRM.Controllers
             app_package_table app_package_table = db.app_package_table.Where(x => x.id == id).FirstOrDefault();
             db.app_package_table.Remove(app_package_table);
             db.SaveChanges();
-            return RedirectToAction("Index");
+
+            int packageid = Convert.ToInt32(app_package_table.level_id);
+            return RedirectToAction("EditPackage", new { id = packageid });
+            //return RedirectToAction("Index");
         }
 
 

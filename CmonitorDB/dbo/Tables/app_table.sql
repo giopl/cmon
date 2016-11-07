@@ -4,8 +4,11 @@
     [name]        NVARCHAR (100) NOT NULL,
     [description] NVARCHAR (500) NULL,
     [updated_on]  DATETIME       NULL,
+    [tab_type]    VARCHAR (10)   NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
 );
+
+
 
 
 

@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Package Run";
 
-    var package = Model.FirstOrDefault();
+    var level = Model.FirstOrDefault();
+    var package = ViewBag.Package as VerifyCRM.Models.app_package;
 
     var runDates = ViewBag.RunDates;
     var records = ViewBag.Records;
@@ -13,12 +14,12 @@
     
 }
 
-<h2>Package Run: <b>@package.LevelName</b></h2>
+<h2>Package Run: <b>@level.LevelName</b></h2>
 
 <ol class="breadcrumb">
     <li><a href="@Url.Action("RunHistory","Monitoring")">Home</a></li>
     <li><a href="@Url.Action("Packages","Package")">Packages</a></li>
-    <li class="active">Package Run @package.LevelName</li>
+    <li class="active">Package Run @level.LevelName</li>
 </ol>
 
 
@@ -26,6 +27,39 @@
     @*<div id="container"></div>*@
     <div id="container2"></div>
 </p>
+
+<a href="@Url.Action("EditPackage", "Package",new { id = package.levelidInt })">Edit</a>
+<table class="table table-condensed table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Source(s)</th>
+            <th>Target(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                 @package.package_description
+            </td>
+            <td>
+                @foreach (var t in package.app_package_table.Where(x => x.relation_type == 1))
+                {
+                    @t.app_table.fulltablename
+                }
+            </td>
+            <td>
+                @foreach (var t in package.app_package_table.Where(x => x.relation_type == 2))
+                {
+                    @t.app_table.fulltablename
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
 <table class="table" id="dtable">
     <thead>
 

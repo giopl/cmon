@@ -124,6 +124,9 @@ namespace VerifyCRM.Controllers
             if (duration.Length > 0)
             duration.Length--;
 
+            var id_decimal = Convert.ToDecimal(id);
+            ViewBag.Package = db.app_package.Find(id_decimal);
+
             ViewBag.RunDates = dts.ToString();
             ViewBag.Records = records.ToString();
             ViewBag.Duration = duration.ToString();

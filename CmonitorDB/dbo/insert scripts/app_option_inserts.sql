@@ -34,3 +34,11 @@ insert into app_option(field, name,value) values
 ('tab_name','Financials & Shareholding (company)','financials & shareholding'),
 ('tab_name','Interactions (company)','interactions'),
 ('tab_name','Collaterals & Insurance Cover (company)','collateral & insurance cover')
+
+
+-- new records -
+
+
+insert into app_option (field, name, value) values
+('relation_type','Source',1),
+('relation_type','Target',2)

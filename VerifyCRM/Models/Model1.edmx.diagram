@@ -51,10 +51,13 @@
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.RunHistoryView" Width="1.5" PointX="5.375" PointY="24.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.TodayRunView" Width="1.5" PointX="5.375" PointY="7.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.MonitoringView" Width="1.5" PointX="18.375" PointY="24.75" />
-        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_package" Width="1.5" PointX="24.375" PointY="14.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_crm_field" Width="1.5" PointX="24.375" PointY="24.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_field" Width="1.5" PointX="12.375" PointY="25.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_option" Width="1.5" PointX="26.375" PointY="0.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_package" Width="1.5" PointX="24.375" PointY="14.75" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_package_table" Width="1.5" PointX="26.625" PointY="8.25" />
+        <AssociationConnector Association="VrpCrmIntegrationModel.package_table_level_id_FK" />
+        <AssociationConnector Association="VrpCrmIntegrationModel.package_table_table_id_FK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,50 @@
+﻿@model VerifyCRM.Models.app_package_table
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>app_package_table</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.relation_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.relation_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.app_package.package_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.app_package.package_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.app_table.tab_schema)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.app_table.tab_schema)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

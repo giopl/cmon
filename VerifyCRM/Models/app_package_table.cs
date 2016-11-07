@@ -12,20 +12,14 @@ namespace VerifyCRM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class app_package
+    public partial class app_package_table
     {
-        public app_package()
-        {
-            this.app_package_table = new HashSet<app_package_table>();
-        }
-    
         public int id { get; set; }
         public decimal level_id { get; set; }
-        public string package_name { get; set; }
-        public string package_type { get; set; }
-        public bool is_active { get; set; }
-        public string package_description { get; set; }
+        public int table_id { get; set; }
+        public int relation_type { get; set; }
     
-        public virtual ICollection<app_package_table> app_package_table { get; set; }
+        public virtual app_package app_package { get; set; }
+        public virtual app_table app_table { get; set; }
     }
 }

@@ -70,9 +70,10 @@ namespace VerifyCRM.Models
         public virtual DbSet<RunHistoryView> RunHistoryView { get; set; }
         public virtual DbSet<TodayRunView> TodayRunView { get; set; }
         public virtual DbSet<MonitoringView> MonitoringView { get; set; }
-        public virtual DbSet<app_package> app_package { get; set; }
         public virtual DbSet<app_crm_field> app_crm_field { get; set; }
         public virtual DbSet<app_field> app_field { get; set; }
         public virtual DbSet<app_option> app_option { get; set; }
+        public virtual DbSet<app_package> app_package { get; set; }
+        public virtual DbSet<app_package_table> app_package_table { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace VerifyCRM.Models
         public app_table()
         {
             this.app_column = new HashSet<app_column>();
+            this.app_package_table = new HashSet<app_package_table>();
         }
     
         public int id { get; set; }
@@ -26,5 +27,6 @@ namespace VerifyCRM.Models
         public Nullable<System.DateTime> updated_on { get; set; }
     
         public virtual ICollection<app_column> app_column { get; set; }
+        public virtual ICollection<app_package_table> app_package_table { get; set; }
     }
 }

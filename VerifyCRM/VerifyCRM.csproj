@@ -127,6 +127,7 @@
     <Compile Include="Controllers\MonitoringController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Controllers\TableController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,6 +146,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\app_package.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\app_package_table.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\app_table.cs">
@@ -258,6 +262,7 @@
     <Compile Include="Models\Meta\app_crm_fieldMeta.cs" />
     <Compile Include="Models\Meta\app_fieldMeta.cs" />
     <Compile Include="Models\Meta\app_packageMeta.cs" />
+    <Compile Include="Models\Meta\app_package_tableMeta.cs" />
     <Compile Include="Models\Meta\app_tableMeta.cs" />
     <Compile Include="Models\Meta\MonitoringMeta.cs" />
     <Compile Include="Models\Meta\MonitoringViewMeta.cs" />
@@ -406,6 +411,11 @@
     <Content Include="Views\Field\EditField.cshtml" />
     <Content Include="Views\Field\ListFields.cshtml" />
     <Content Include="Views\Field\CreateField.cshtml" />
+    <Content Include="Views\Package\CreatePackageTable.cshtml" />
+    <Content Include="Views\Package\DeletePackageTable.cshtml" />
+    <Content Include="Views\Test\Details.cshtml" />
+    <Content Include="Views\Package\EditPackageTable.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

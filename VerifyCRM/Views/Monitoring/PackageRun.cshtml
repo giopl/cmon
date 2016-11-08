@@ -35,6 +35,8 @@
             <th>Description</th>
             <th>Source(s)</th>
             <th>Target(s)</th>
+            <th>DB2(s)</th>
+            <th>Procedure(s)</th>
         </tr>
     </thead>
     <tbody>
@@ -45,15 +47,28 @@
             <td>
                 @foreach (var t in package.app_package_table.Where(x => x.relation_type == 1))
                 {
-                    @t.app_table.fulltablename
+                    @t.app_table.fulltablename<br />
                 }
             </td>
             <td>
                 @foreach (var t in package.app_package_table.Where(x => x.relation_type == 2))
                 {
-                    @t.app_table.fulltablename
+                    @t.app_table.fulltablename<br />
                 }
             </td>
+            <td>
+                @foreach (var t in package.app_package_table.Where(x => x.relation_type == 3))
+                {
+                    @t.app_table.fulltablename<br />
+                }
+            </td>
+            <td>
+                @foreach (var t in package.app_package_table.Where(x => x.relation_type == 4))
+                {
+                    @t.app_table.fulltablename <br />
+                }
+            </td>
+
         </tr>
     </tbody>
 </table>

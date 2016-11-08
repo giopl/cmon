@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using VerifyCRM.Helpers;
 
 namespace VerifyCRM.Models
 {
@@ -29,7 +30,9 @@ namespace VerifyCRM.Models
         {
             get
             {
-                return relation_type == 1 ? "Source" : "Target";
+                var result = (Enumerations.RelationTypeEnum)relation_type;
+
+                return result.ToString();
             }
         }
     

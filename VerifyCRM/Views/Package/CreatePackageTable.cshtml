@@ -12,7 +12,7 @@
 {
     @Html.AntiForgeryToken()
     
-    <input type="hidden" name="level_id" value="@package.level_id" />
+    <input type="hidden" name="packageid" value="@package.levelidInt" />
     <div class="form-horizontal">
         <h4>@package.package_name</h4>
         <hr />
@@ -25,7 +25,7 @@
             </div>
         </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.relation_type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
@@ -37,19 +37,46 @@
         <div class="form-group">
             @Html.LabelFor(model => model.table_id, "table_id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("table_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("table_id", ViewBag.table_id as List<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.table_id, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">            
+            <div class="control-label col-md-2">Source Table</div>
+            <div class="col-md-10">
+                @Html.DropDownList("table_id_source", ViewBag.table_id_source as List<SelectListItem>, htmlAttributes: new { @class = "form-control", multiple = "multiple" })
+                @Html.ValidationMessageFor(model => model.table_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Target Table</div>
+            <div class="col-md-10">
+                @Html.DropDownList("table_id_target", ViewBag.table_id_target as List<SelectListItem>, htmlAttributes: new { @class = "form-control" , multiple="multiple" })
+                @Html.ValidationMessageFor(model => model.table_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="control-label col-md-2">DB2 Table</div>
+            <div class="col-md-10">
+                @Html.DropDownList("table_id_db2", ViewBag.table_id_db2 as List<SelectListItem>, htmlAttributes: new { @class = "form-control", multiple = "multiple" })
                 @Html.ValidationMessageFor(model => model.table_id, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.relation_type, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">DB2 Procedure</div>
             <div class="col-md-10">
-                
-                @Html.DropDownList("relation_type", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.relation_type, "", new { @class = "text-danger" })
+                @Html.DropDownList("table_id_procedure", ViewBag.table_id_procedure as List<SelectListItem>, htmlAttributes: new { @class = "form-control", multiple = "multiple" })
+                @Html.ValidationMessageFor(model => model.table_id, "", new { @class = "text-danger" })
             </div>
         </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -65,4 +92,11 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/select2")
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $("select").select2();
+});
+</script>
 }

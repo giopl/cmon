@@ -25,6 +25,9 @@ namespace VerifyCRM.Models
         public string name { get; set; }
         public string description { get; set; }
         public Nullable<System.DateTime> updated_on { get; set; }
+        public string tab_type { get; set; }
+        public bool is_db2 { get; set; }
+        public bool is_procedure { get; set; }
     
         public virtual ICollection<app_column> app_column { get; set; }
         public virtual ICollection<app_package_table> app_package_table { get; set; }

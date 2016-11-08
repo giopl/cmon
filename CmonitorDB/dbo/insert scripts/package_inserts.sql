@@ -47,4 +47,4 @@ insert into app_package(level_id, package_type, package_name) values
 (	53	,	'CRM'	,	'Bank Assurance (CustomerProduct)'	),
 (	54	,	'IRM'	,	'IRM FEED'	),
 (	55	,	'DB2'	,	'Db2Integration'	),
-(	56	,	'DB2'	,	'Db2IntegrationCore'	),
+(	56	,	'DB2'	,	'Db2IntegrationCore'	)

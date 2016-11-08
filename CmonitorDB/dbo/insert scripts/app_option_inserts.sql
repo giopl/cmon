@@ -41,4 +41,8 @@ insert into app_option(field, name,value) values
 
 insert into app_option (field, name, value) values
 ('relation_type','Source',1),
-('relation_type','Target',2)
+('relation_type','Target',2),
+('relation_type', 'DB2',3),
+('relation_type', 'DB2-SP',4)
+
+

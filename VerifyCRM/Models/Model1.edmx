@@ -107,6 +107,9 @@
           <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="500" />
           <Property Name="updated_on" Type="datetime" />
+          <Property Name="tab_type" Type="varchar" MaxLength="30" />
+          <Property Name="is_db2" Type="bit" Nullable="false" />
+          <Property Name="is_procedure" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="app_user">
           <Key>
@@ -867,6 +870,8 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.core_loans_loans' does not h
           <Property Name="repayment_amount" Type="money" />
           <Property Name="repayment_frequency" Type="nvarchar" MaxLength="100" />
           <Property Name="arrears" Type="money" />
+          <Property Name="monthly_repaymnt_amt" Type="money" />
+          <Property Name="scheduled_next_payment_amt" Type="money" />
           <Property Name="domain_name" Type="nvarchar" MaxLength="16" />
           <Property Name="owneridtype" Type="int" />
         </EntityType>
@@ -2135,6 +2140,8 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
     [core_loans_loans].[repayment_amount] AS [repayment_amount], 
     [core_loans_loans].[repayment_frequency] AS [repayment_frequency], 
     [core_loans_loans].[arrears] AS [arrears], 
+    [core_loans_loans].[monthly_repaymnt_amt] AS [monthly_repaymnt_amt], 
+    [core_loans_loans].[scheduled_next_payment_amt] AS [scheduled_next_payment_amt], 
     [core_loans_loans].[domain_name] AS [domain_name], 
     [core_loans_loans].[owneridtype] AS [owneridtype]
     FROM [dbo].[core_loans_loans] AS [core_loans_loans]</DefiningQuery>
@@ -2624,25 +2631,8 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VrpCrmIntegrationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="app_table">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-          <Property Name="tab_schema" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="description" MaxLength="500" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="updated_on" Precision="3" Type="DateTime" />
-          <NavigationProperty Name="app_column" Relationship="VrpCrmIntegrationModel.FK__app_colum__table__0682EC34" FromRole="app_table" ToRole="app_column" />
-          <NavigationProperty Name="app_package_table" Relationship="VrpCrmIntegrationModel.package_table_table_id_FK" FromRole="app_table" ToRole="app_package_table" />
-        </EntityType>
         <EntityContainer Name="CRMEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="app_table" EntityType="Self.app_table" />
           <EntitySet Name="app_column" EntityType="VrpCrmIntegrationModel.app_column" />
-          <AssociationSet Name="FK__app_colum__table__0682EC34" Association="VrpCrmIntegrationModel.FK__app_colum__table__0682EC34">
-            <End EntitySet="app_table" Role="app_table" />
-            <End EntitySet="app_column" Role="app_column" />
-          </AssociationSet>
           <EntitySet Name="app_user" EntityType="VrpCrmIntegrationModel.app_user" />
           <EntitySet Name="SSISErrorTable" EntityType="VrpCrmIntegrationModel.SSISErrorTable" />
           <EntitySet Name="Monitoring" EntityType="VrpCrmIntegrationModel.Monitoring" />
@@ -2695,6 +2685,11 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
             <End Role="app_package" EntitySet="app_package" />
             <End Role="app_package_table" EntitySet="app_package_table" />
           </AssociationSet>
+          <EntitySet Name="app_table" EntityType="VrpCrmIntegrationModel.app_table" />
+          <AssociationSet Name="FK__app_colum__table__0682EC34" Association="VrpCrmIntegrationModel.FK__app_colum__table__0682EC34">
+            <End Role="app_table" EntitySet="app_table" />
+            <End Role="app_column" EntitySet="app_column" />
+          </AssociationSet>
           <AssociationSet Name="package_table_table_id_FK" Association="VrpCrmIntegrationModel.package_table_table_id_FK">
             <End Role="app_table" EntitySet="app_table" />
             <End Role="app_package_table" EntitySet="app_package_table" />
@@ -2717,18 +2712,6 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="updated_on" Precision="3" Type="DateTime" />
           <NavigationProperty Name="app_table" Relationship="VrpCrmIntegrationModel.FK__app_colum__table__0682EC34" FromRole="app_column" ToRole="app_table" />
         </EntityType>
-        <Association Name="FK__app_colum__table__0682EC34">
-          <End Type="VrpCrmIntegrationModel.app_table" Multiplicity="1" Role="app_table" />
-          <End Type="VrpCrmIntegrationModel.app_column" Multiplicity="*" Role="app_column" />
-          <ReferentialConstraint>
-            <Principal Role="app_table">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="app_column">
-              <PropertyRef Name="table_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="app_user">
           <Key>
             <PropertyRef Name="username" />
@@ -3508,6 +3491,8 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="arrears" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="domain_name" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="owneridtype" Type="Int32" />
+          <Property Name="monthly_repaymnt_amt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="scheduled_next_payment_amt" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="core_outlet">
           <Key>
@@ -4068,6 +4053,33 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="app_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tab_schema" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="updated_on" Type="DateTime" Precision="3" />
+          <Property Name="tab_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="is_db2" Type="Boolean" Nullable="false" />
+          <Property Name="is_procedure" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="app_column" Relationship="VrpCrmIntegrationModel.FK__app_colum__table__0682EC34" FromRole="app_table" ToRole="app_column" />
+          <NavigationProperty Name="app_package_table" Relationship="VrpCrmIntegrationModel.package_table_table_id_FK" FromRole="app_table" ToRole="app_package_table" />
+        </EntityType>
+        <Association Name="FK__app_colum__table__0682EC34">
+          <End Type="VrpCrmIntegrationModel.app_table" Role="app_table" Multiplicity="1" />
+          <End Type="VrpCrmIntegrationModel.app_column" Role="app_column" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="app_table">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="app_column">
+              <PropertyRef Name="table_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="package_table_table_id_FK">
           <End Type="VrpCrmIntegrationModel.app_table" Role="app_table" Multiplicity="1" />
           <End Type="VrpCrmIntegrationModel.app_package_table" Role="app_package_table" Multiplicity="*" />
@@ -4086,17 +4098,6 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="VrpCrmIntegrationModelStoreContainer" CdmEntityContainer="CRMEntities">
-          <EntitySetMapping Name="app_table">
-            <EntityTypeMapping TypeName="VrpCrmIntegrationModel.app_table">
-              <MappingFragment StoreEntitySet="app_table">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="tab_schema" ColumnName="tab_schema" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="updated_on" ColumnName="updated_on" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="app_column">
             <EntityTypeMapping TypeName="VrpCrmIntegrationModel.app_column">
               <MappingFragment StoreEntitySet="app_column">
@@ -4825,6 +4826,8 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <EntitySetMapping Name="core_loans_loans">
             <EntityTypeMapping TypeName="VrpCrmIntegrationModel.core_loans_loans">
               <MappingFragment StoreEntitySet="core_loans_loans">
+                <ScalarProperty Name="scheduled_next_payment_amt" ColumnName="scheduled_next_payment_amt" />
+                <ScalarProperty Name="monthly_repaymnt_amt" ColumnName="monthly_repaymnt_amt" />
                 <ScalarProperty Name="owneridtype" ColumnName="owneridtype" />
                 <ScalarProperty Name="domain_name" ColumnName="domain_name" />
                 <ScalarProperty Name="arrears" ColumnName="arrears" />
@@ -5429,6 +5432,20 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
                 <ScalarProperty Name="relation_type" ColumnName="relation_type" />
                 <ScalarProperty Name="table_id" ColumnName="table_id" />
                 <ScalarProperty Name="level_id" ColumnName="level_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_table">
+            <EntityTypeMapping TypeName="VrpCrmIntegrationModel.app_table">
+              <MappingFragment StoreEntitySet="app_table">
+                <ScalarProperty Name="is_procedure" ColumnName="is_procedure" />
+                <ScalarProperty Name="is_db2" ColumnName="is_db2" />
+                <ScalarProperty Name="tab_type" ColumnName="tab_type" />
+                <ScalarProperty Name="updated_on" ColumnName="updated_on" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="tab_schema" ColumnName="tab_schema" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

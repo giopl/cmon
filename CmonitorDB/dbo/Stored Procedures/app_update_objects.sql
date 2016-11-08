@@ -43,8 +43,8 @@ and target.col_name = source.col_nam
 )
   
 WHEN NOT MATCHED THEN  
-INSERT (table_id, tab_schema, tab_name, col_name, col_type, col_length, is_nullable, ordinal_position) 
-VALUES (source.id, source.tab_schema, source.tab_name, source.col_nam, source.col_type, source.col_len, source.col_null, source.col_ord_pos)  
+INSERT (table_id, tab_schema, tab_name, col_name, col_type, col_length, is_nullable, ordinal_position,updated_on) 
+VALUES (source.id, source.tab_schema, source.tab_name, source.col_nam, source.col_type, source.col_len, source.col_null, source.col_ord_pos,getDate())  
 
 WHEN  MATCHED THEN  
 UPDATE SET 
@@ -53,7 +53,8 @@ col_name = SOURCE.COL_NAM,
  col_type= SOURCE.COL_tYPE,
   col_length= SOURCE.COL_LEN, 
   is_nullable= SOURCE.COL_NULL, 
-  ordinal_position= SOURCE.COL_ORD_POS
+  ordinal_position= SOURCE.COL_ORD_POS,
+  updated_on = getDAte()
 ;
     
 END

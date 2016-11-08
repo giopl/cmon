@@ -5,9 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bb17af81537d468ead62114b8cd70900" Name="Diagram1">
-        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_table" PointX="0.75" PointY="1.625" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_column" PointX="3" PointY="1" Width="1.5" />
-        <AssociationConnector Association="VrpCrmIntegrationModel.FK__app_colum__table__0682EC34" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_user" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.SSISErrorTable" Width="1.5" PointX="2.75" PointY="5.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.Monitoring" Width="1.5" PointX="5.75" PointY="3.75" />
@@ -57,6 +55,8 @@
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_package" Width="1.5" PointX="24.375" PointY="14.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_package_table" Width="1.5" PointX="26.625" PointY="8.25" />
         <AssociationConnector Association="VrpCrmIntegrationModel.package_table_level_id_FK" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_table" Width="1.5" PointX="0.75" PointY="1.25" />
+        <AssociationConnector Association="VrpCrmIntegrationModel.FK__app_colum__table__0682EC34" />
         <AssociationConnector Association="VrpCrmIntegrationModel.package_table_table_id_FK" />
       </Diagram>
     </edmx:Diagrams>

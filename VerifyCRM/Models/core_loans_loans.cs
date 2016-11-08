@@ -75,5 +75,7 @@ namespace VerifyCRM.Models
         public Nullable<decimal> arrears { get; set; }
         public string domain_name { get; set; }
         public Nullable<int> owneridtype { get; set; }
+        public Nullable<decimal> monthly_repaymnt_amt { get; set; }
+        public Nullable<decimal> scheduled_next_payment_amt { get; set; }
     }
 }

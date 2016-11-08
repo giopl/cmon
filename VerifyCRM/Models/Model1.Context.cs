@@ -25,7 +25,6 @@ namespace VerifyCRM.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<app_table> app_table { get; set; }
         public virtual DbSet<app_column> app_column { get; set; }
         public virtual DbSet<app_user> app_user { get; set; }
         public virtual DbSet<SSISErrorTable> SSISErrorTable { get; set; }
@@ -75,5 +74,6 @@ namespace VerifyCRM.Models
         public virtual DbSet<app_option> app_option { get; set; }
         public virtual DbSet<app_package> app_package { get; set; }
         public virtual DbSet<app_package_table> app_package_table { get; set; }
+        public virtual DbSet<app_table> app_table { get; set; }
     }
 }

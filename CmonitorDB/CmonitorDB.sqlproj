@@ -63,6 +63,7 @@
     <Folder Include="Security\" />
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="dbo\insert scripts" />
+    <Folder Include="dbo\Functions\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\vrp_treasury.sql" />
@@ -185,6 +186,11 @@
     <Build Include="dbo\Tables\app_field.sql" />
     <Build Include="dbo\Tables\app_option.sql" />
     <Build Include="dbo\Tables\app_package_table.sql" />
+    <None Include="dbo\insert scripts\organization_structure.sql" />
+    <Build Include="dbo\Tables\vrp_monthly_alert.sql" />
+    <Build Include="dbo\Tables\core_monthly_alert.sql" />
+    <Build Include="dbo\Tables\app_organization_structure.sql" />
+    <Build Include="dbo\Functions\SplitString.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\insert scripts\app_option_inserts.sql" />

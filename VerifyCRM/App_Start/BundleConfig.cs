@@ -30,11 +30,19 @@ namespace VerifyCRM
                 ));
 
 
+
+            bundles.Add(new ScriptBundle("~/bundles/orgchart").Include(
+                      "~/Scripts/jquery.orgchart.js"
+                ));
+
+
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.css",
                       "~/Content/datatables.css",
                             "~/Content/select2.css",
+                            "~/Content/jquery.orgchart.css",
                       "~/Content/site.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,

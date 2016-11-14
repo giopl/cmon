@@ -51,7 +51,6 @@ namespace VerifyCRM.Models
         public virtual DbSet<core_fixed_deposit> core_fixed_deposit { get; set; }
         public virtual DbSet<core_investment> core_investment { get; set; }
         public virtual DbSet<core_joint_account> core_joint_account { get; set; }
-        public virtual DbSet<core_joint_holders_connections> core_joint_holders_connections { get; set; }
         public virtual DbSet<core_loan_guarantors> core_loan_guarantors { get; set; }
         public virtual DbSet<core_loans_loans> core_loans_loans { get; set; }
         public virtual DbSet<core_outlet> core_outlet { get; set; }
@@ -75,5 +74,6 @@ namespace VerifyCRM.Models
         public virtual DbSet<app_package> app_package { get; set; }
         public virtual DbSet<app_package_table> app_package_table { get; set; }
         public virtual DbSet<app_table> app_table { get; set; }
+        public virtual DbSet<app_organization_structure> app_organization_structure { get; set; }
     }
 }

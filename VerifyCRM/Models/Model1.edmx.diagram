@@ -31,7 +31,6 @@
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_fixed_deposit" Width="1.5" PointX="15.75" PointY="16.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_investment" Width="1.5" PointX="17.75" PointY="0.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_joint_account" Width="1.5" PointX="17.75" PointY="11.75" />
-        <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_joint_holders_connections" Width="1.5" PointX="17.75" PointY="15.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_loan_guarantors" Width="1.5" PointX="17.75" PointY="18.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_loans_loans" Width="1.5" PointX="19.75" PointY="0.75" />
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.core_outlet" Width="1.5" PointX="19.75" PointY="14.75" />
@@ -58,6 +57,7 @@
         <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_table" Width="1.5" PointX="0.75" PointY="1.25" />
         <AssociationConnector Association="VrpCrmIntegrationModel.FK__app_colum__table__0682EC34" />
         <AssociationConnector Association="VrpCrmIntegrationModel.package_table_table_id_FK" />
+        <EntityTypeShape EntityType="VrpCrmIntegrationModel.app_organization_structure" Width="1.5" PointX="26.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

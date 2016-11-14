@@ -12,12 +12,13 @@ namespace VerifyCRM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class core_joint_holders_connections
+    public partial class app_organization_structure
     {
-        public int id_row { get; set; }
-        public bool include_in_run { get; set; }
-        public string Flag { get; set; }
-        public string ConnectFromId { get; set; }
-        public string ConnectToId { get; set; }
+        public int id { get; set; }
+        public Nullable<int> parent_id { get; set; }
+        public string org_name { get; set; }
+        public string org_type { get; set; }
+        public short org_level { get; set; }
+        public bool show { get; set; }
     }
 }

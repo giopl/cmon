@@ -25,6 +25,16 @@ namespace VerifyCRM.Controllers
             return View(db.app_table.ToList());
         }
 
+        public ActionResult OrganizationStructure()
+        {
+            return View(db.app_organization_structure.Where(x=>x.show).ToList());
+        }
+
+
+
+
+
+
         // GET: Table/Details/5
         public ActionResult TableDetails(int? id)
         {

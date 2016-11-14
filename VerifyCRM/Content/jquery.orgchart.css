@@ -1,6 +1,6 @@
 ﻿div.orgChart {
-    border                : 1px solid #cccccc;
-    background-color      : #ffffe8;
+    /*border                : 1px solid #cccccc;
+    background-color      : #ffffe8;*/
     margin                : 10px;
     padding               : 20px;
 }
@@ -55,8 +55,8 @@ div.orgChart div.node {
     cursor                : default;
     border                : 2px solid black;
     display               : inline-block;
-    padding               : 0 4px;
-    width                 : 96px;
+    padding               : 10px 4px;
+    width                 : 160px;
     height                : 60px;
     background-color      : #ffffcf;
     line-height           : 1.3em;

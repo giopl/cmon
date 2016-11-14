@@ -1,1 +1,4 @@
 ﻿https://github.com/caprica/jquery-orgchart
+
+
+update app_organization_structure set parent_id = 19 where id in (134,135)

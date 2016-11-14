@@ -77,6 +77,17 @@
           <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="value" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="app_organization_structure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parent_id" Type="int" />
+          <Property Name="org_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="org_type" Type="nvarchar" MaxLength="20" />
+          <Property Name="org_level" Type="smallint" Nullable="false" />
+          <Property Name="show" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="app_package">
           <Key>
             <PropertyRef Name="level_id" />
@@ -776,19 +787,6 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.core_joint_account' does not
           <Property Name="role" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'VrpCrmIntegration.dbo.core_joint_holders_connections' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="core_joint_holders_connections">
-          <Key>
-            <PropertyRef Name="id_row" />
-            <PropertyRef Name="include_in_run" />
-          </Key>
-          <Property Name="id_row" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="include_in_run" Type="bit" Nullable="false" />
-          <Property Name="Flag" Type="nchar" MaxLength="1" />
-          <Property Name="ConnectFromId" Type="nvarchar" MaxLength="100" />
-          <Property Name="ConnectToId" Type="nvarchar" MaxLength="100" />
-        </EntityType>
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'VrpCrmIntegration.dbo.core_loan_guarantors' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="core_loan_guarantors">
           <Key>
@@ -1442,7 +1440,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="IsLastRun" Type="int" />
           <Property Name="Status" Type="varchar" MaxLength="42" />
         </EntityType>
-        <Association Name="FK__app_colum__table__0682EC34">
+        <Association Name="FK__app_colum__table__2B0A656D">
           <End Role="app_table" Type="Self.app_table" Multiplicity="1" />
           <End Role="app_column" Type="Self.app_column" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1483,6 +1481,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <EntitySet Name="app_crm_field" EntityType="Self.app_crm_field" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_field" EntityType="Self.app_field" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_option" EntityType="Self.app_option" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="app_organization_structure" EntityType="Self.app_organization_structure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_package" EntityType="Self.app_package" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_package_table" EntityType="Self.app_package_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="app_table" EntityType="Self.app_table" Schema="dbo" store:Type="Tables" />
@@ -2058,15 +2057,6 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
     [core_joint_account].[role] AS [role]
     FROM [dbo].[core_joint_account] AS [core_joint_account]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="core_joint_holders_connections" EntityType="Self.core_joint_holders_connections" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [core_joint_holders_connections].[id_row] AS [id_row], 
-    [core_joint_holders_connections].[include_in_run] AS [include_in_run], 
-    [core_joint_holders_connections].[Flag] AS [Flag], 
-    [core_joint_holders_connections].[ConnectFromId] AS [ConnectFromId], 
-    [core_joint_holders_connections].[ConnectToId] AS [ConnectToId]
-    FROM [dbo].[core_joint_holders_connections] AS [core_joint_holders_connections]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="core_loan_guarantors" EntityType="Self.core_loan_guarantors" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [core_loan_guarantors].[id_row] AS [id_row], 
@@ -2614,7 +2604,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
     [TodayRunView].[Status] AS [Status]
     FROM [dbo].[TodayRunView] AS [TodayRunView]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__app_colum__table__0682EC34" Association="Self.FK__app_colum__table__0682EC34">
+          <AssociationSet Name="FK__app_colum__table__2B0A656D" Association="Self.FK__app_colum__table__2B0A656D">
             <End Role="app_table" EntitySet="app_table" />
             <End Role="app_column" EntitySet="app_column" />
           </AssociationSet>
@@ -2658,7 +2648,6 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <EntitySet Name="core_fixed_deposit" EntityType="VrpCrmIntegrationModel.core_fixed_deposit" />
           <EntitySet Name="core_investment" EntityType="VrpCrmIntegrationModel.core_investment" />
           <EntitySet Name="core_joint_account" EntityType="VrpCrmIntegrationModel.core_joint_account" />
-          <EntitySet Name="core_joint_holders_connections" EntityType="VrpCrmIntegrationModel.core_joint_holders_connections" />
           <EntitySet Name="core_loan_guarantors" EntityType="VrpCrmIntegrationModel.core_loan_guarantors" />
           <EntitySet Name="core_loans_loans" EntityType="VrpCrmIntegrationModel.core_loans_loans" />
           <EntitySet Name="core_outlet" EntityType="VrpCrmIntegrationModel.core_outlet" />
@@ -2694,6 +2683,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
             <End Role="app_table" EntitySet="app_table" />
             <End Role="app_package_table" EntitySet="app_package_table" />
           </AssociationSet>
+          <EntitySet Name="app_organization_structure" EntityType="VrpCrmIntegrationModel.app_organization_structure" />
         </EntityContainer>
         <EntityType Name="app_column">
           <Key>
@@ -3400,17 +3390,6 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="module" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="role" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="core_joint_holders_connections">
-          <Key>
-            <PropertyRef Name="id_row" />
-            <PropertyRef Name="include_in_run" />
-          </Key>
-          <Property Name="id_row" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="include_in_run" Type="Boolean" Nullable="false" />
-          <Property Name="Flag" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
-          <Property Name="ConnectFromId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ConnectToId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="core_loan_guarantors">
           <Key>
             <PropertyRef Name="id_row" />
@@ -4092,6 +4071,17 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="app_organization_structure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parent_id" Type="Int32" />
+          <Property Name="org_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="org_type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="org_level" Type="Int16" Nullable="false" />
+          <Property Name="show" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4798,17 +4788,6 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="core_joint_holders_connections">
-            <EntityTypeMapping TypeName="VrpCrmIntegrationModel.core_joint_holders_connections">
-              <MappingFragment StoreEntitySet="core_joint_holders_connections">
-                <ScalarProperty Name="ConnectToId" ColumnName="ConnectToId" />
-                <ScalarProperty Name="ConnectFromId" ColumnName="ConnectFromId" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="include_in_run" ColumnName="include_in_run" />
-                <ScalarProperty Name="id_row" ColumnName="id_row" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="core_loan_guarantors">
             <EntityTypeMapping TypeName="VrpCrmIntegrationModel.core_loan_guarantors">
               <MappingFragment StoreEntitySet="core_loan_guarantors">
@@ -5446,6 +5425,18 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="tab_schema" ColumnName="tab_schema" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_organization_structure">
+            <EntityTypeMapping TypeName="VrpCrmIntegrationModel.app_organization_structure">
+              <MappingFragment StoreEntitySet="app_organization_structure">
+                <ScalarProperty Name="show" ColumnName="show" />
+                <ScalarProperty Name="org_level" ColumnName="org_level" />
+                <ScalarProperty Name="org_type" ColumnName="org_type" />
+                <ScalarProperty Name="org_name" ColumnName="org_name" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

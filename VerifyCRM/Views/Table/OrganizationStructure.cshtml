@@ -1,0 +1,155 @@
+﻿@model IEnumerable<VerifyCRM.Models.app_organization_structure>
+
+@{
+    ViewBag.Title = "OrganizationStructure";
+}
+
+<h2>OrganizationStructure</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<div id="chart"></div>
+
+<ul id="basic-chart-source" class="hide">
+    <li>
+        MCB
+<ul>
+        @foreach (var l1 in Model.Where(x => x.org_level == 1))
+        {            
+            <li class="@l1.org_type">
+                @l1.id.@l1.org_name
+                    <ul>
+                        @foreach (var l2 in Model.Where(x => x.parent_id == l1.id))
+                        {
+                            <li class="@l2.org_type">@l2.id.@Html.Raw(l2.org_name) 
+                        
+                                <ul>
+                                @foreach(var l3 in Model.Where(x=>x.parent_id == l2.id))
+                                {
+                                    <li class="@l3.org_type">
+                                        @l3.id.@Html.Raw(l3.org_name) 
+                                            
+                                        <ul>
+                                            @foreach (var l4 in Model.Where(x => x.parent_id == l3.id))
+                                            {
+                                                <li class="@l4.org_type">@l4.id.@Html.Raw(l4.org_name) 
+                                            
+                                                    <ul>
+                                                        @foreach (var l5 in Model.Where(x => x.parent_id == l4.id))
+                                                        {
+                                                            <li class="@l5.org_type">@l5.id.@Html.Raw(l5.org_name)  </li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
+
+
+                                    </li>                     
+                            
+                                }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </li>
+    }
+            </ul>
+        @*<ul>
+            <li>
+                Bill Lumbergh
+                <ul>
+                    <li>
+                        Software
+                        <ul>
+                            <li>Peter Gibbons</li>
+                            <li>Michael Bolton</li>
+                            <li class="long-name">Samir Nagheenanajar</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Collation
+                        <ul>
+                            <li>Milton Waddams</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Consultants
+                        <ul>
+                            <li>Bob Slydell</li>
+                            <li>Bob Porter</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>*@
+    </li>
+</ul>
+
+<table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parent_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.org_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.org_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.org_level)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parent_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.org_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.org_type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.org_level)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+
+    </table>
+
+@section scripts {
+    @Scripts.Render("~/bundles/orgchart")
+    <script>
+        $(document).ready(function () {
+            $("#basic-chart-source").orgChart(
+                { container: $("#chart"),
+
+                interactive: true,
+                showLevels: 2
+                }
+
+                );
+        });
+    </script>
+}

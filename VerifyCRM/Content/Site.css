@@ -51,3 +51,11 @@ textarea {
 
 .border-red { border:1px solid red;}
 .border-green { border:1px solid green;}
+
+
+/* organization structure*/
+.BU { background: #3399ff!important;color:white!important}
+.Division { background: #ff6a00!important;color:white!important}
+.Region { background: red!important;color:white!important}
+.SBU { background: #ffd800!important}
+.Team { background: #4cff00!important}

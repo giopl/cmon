@@ -129,9 +129,8 @@
                 @Html.DisplayFor(modelItem => item.org_level)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                <a href="@Url.Action("EditOrganizationStructure", new { id = item.id })"><span class="fa fa-edit"></span></a> |
+                <a href="@Url.Action("DeleteOrganizationStructure", new { id = item.id })"><span class="fa fa-trash"></span></a>
             </td>
         </tr>
     }

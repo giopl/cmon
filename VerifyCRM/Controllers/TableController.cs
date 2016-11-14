@@ -170,6 +170,88 @@ namespace VerifyCRM.Controllers
 
         #endregion
 
+        #region organizationstructure
+        // GET: app_organization_structure/Create
+        public ActionResult CreateOrganizationStructure()
+        {
+            return View();
+        }
+
+        // POST: app_organization_structure/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateOrganizationStructure([Bind(Include = "id,parent_id,org_name,org_type,org_level,show")] app_organization_structure app_organization_structure)
+        {
+            if (ModelState.IsValid)
+            {
+                db.app_organization_structure.Add(app_organization_structure);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(app_organization_structure);
+        }
+
+        // GET: app_organization_structure/Edit/5
+        public ActionResult EditOrganizationStructure(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            app_organization_structure app_organization_structure = db.app_organization_structure.Find(id);
+            if (app_organization_structure == null)
+            {
+                return HttpNotFound();
+            }
+            return View(app_organization_structure);
+        }
+
+        // POST: app_organization_structure/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditOrganizationStructure([Bind(Include = "id,parent_id,org_name,org_type,org_level,show")] app_organization_structure app_organization_structure)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(app_organization_structure).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(app_organization_structure);
+        }
+
+        // GET: app_organization_structure/Delete/5
+        public ActionResult DeleteOrganizationStructure(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            app_organization_structure app_organization_structure = db.app_organization_structure.Find(id);
+            if (app_organization_structure == null)
+            {
+                return HttpNotFound();
+            }
+            return View(app_organization_structure);
+        }
+
+        // POST: app_organization_structure/Delete/5
+        [HttpPost, ActionName("DeleteOrganizationStructure")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteOrganizationStructureConfirmed(int id)
+        {
+            app_organization_structure app_organization_structure = db.app_organization_structure.Find(id);
+            db.app_organization_structure.Remove(app_organization_structure);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        #endregion
 
         protected override void Dispose(bool disposing)
         {

@@ -424,6 +424,9 @@
     <Content Include="Views\Package\EditPackageTable.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Table\OrganizationStructure.cshtml" />
+    <Content Include="Views\Table\CreateOrganizationStructure.cshtml" />
+    <Content Include="Views\Table\DeleteOrganizationStructure.cshtml" />
+    <Content Include="Views\Table\EditOrganizationStructure.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

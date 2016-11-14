@@ -2,3 +2,10 @@
 
 
 update app_organization_structure set parent_id = 19 where id in (134,135)
+
+
+
+select org_name, CHARINDEX('(',org_name,0)-1, CHARINDEX(')',org_name,0), --,left(org_name,CHARINDEX('(',org_name,0)),
+case when substring(org_name,0,CHARINDEX('(',org_name,0)) = '' then org_name else substring(org_name,0,CHARINDEX('(',org_name,0)) end,
+case when substring(org_name,0,CHARINDEX('(',org_name,0)) = '' then '' else SUBSTRING(org_name,CHARINDEX('(',org_name,0)+1,len(org_name) - CHARINDEX('(',org_name,0)-1) end
+from app_organization_structure

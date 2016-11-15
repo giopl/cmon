@@ -317,7 +317,9 @@
     <Content Include="Content\datatables.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\jquery.orgchart.caprica.css" />
     <Content Include="Content\jquery.orgchart.css" />
+    <Content Include="Content\orgchart.sho.css" />
     <Content Include="Content\select2.css" />
     <Content Include="Content\XMLFile1.xml" />
     <Content Include="favicon.ico" />
@@ -327,6 +329,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Helpers\notes.txt" />
     <Content Include="Helpers\package.txt" />
+    <Content Include="Images\orgchart.minus.png" />
+    <Content Include="Images\orgchart.plus.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Model1.edmx">
@@ -364,6 +368,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.orgchart.caprica.js" />
     <Content Include="Scripts\jquery.orgchart.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -371,6 +376,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jscharts.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\orgchart.sho.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\select2.full.js" />

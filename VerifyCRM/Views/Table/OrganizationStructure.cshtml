@@ -1,44 +1,48 @@
 ﻿@model IEnumerable<VerifyCRM.Models.app_organization_structure>
 
 @{
-    ViewBag.Title = "OrganizationStructure";
+    ViewBag.Title = "Organization Structure";
+    var structure = Model.Where(x => x.show);
 }
 
-<h2>OrganizationStructure</h2>
+<h2>Organization Structure</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("RunHistory","Monitoring")">Home</a></li>
+    <li class="active">Organization Structure</li>
+</ol>
+
+
 
 
 <div id="chart"></div>
 
-<ul id="basic-chart-source" class="hide">
+<ul id="data" class="hide">
     <li>
         MCB
 <ul>
-        @foreach (var l1 in Model.Where(x => x.org_level == 1))
+        @foreach (var l1 in structure.Where(x => x.org_level == 1))
         {            
-            <li class="@l1.org_type">
+            <li class="@l1.org_type root" >
                 @l1.id.@l1.org_name
                     <ul>
-                        @foreach (var l2 in Model.Where(x => x.parent_id == l1.id))
+                        @foreach (var l2 in structure.Where(x => x.parent_id == l1.id))
                         {
                             <li class="@l2.org_type">@l2.id.@Html.Raw(l2.org_name) 
                         
                                 <ul>
-                                @foreach(var l3 in Model.Where(x=>x.parent_id == l2.id))
+                                @foreach (var l3 in structure.Where(x => x.parent_id == l2.id))
                                 {
                                     <li class="@l3.org_type">
                                         @l3.id.@Html.Raw(l3.org_name) 
                                             
                                         <ul>
-                                            @foreach (var l4 in Model.Where(x => x.parent_id == l3.id))
+                                            @foreach (var l4 in structure.Where(x => x.parent_id == l3.id))
                                             {
                                                 <li class="@l4.org_type">@l4.id.@Html.Raw(l4.org_name) 
                                             
                                                     <ul>
-                                                        @foreach (var l5 in Model.Where(x => x.parent_id == l4.id))
+                                                        @foreach (var l5 in structure.Where(x => x.parent_id == l4.id))
                                                         {
                                                             <li class="@l5.org_type">@l5.id.@Html.Raw(l5.org_name)  </li>
                                                         }
@@ -58,38 +62,14 @@
                 </li>
     }
             </ul>
-        @*<ul>
-            <li>
-                Bill Lumbergh
-                <ul>
-                    <li>
-                        Software
-                        <ul>
-                            <li>Peter Gibbons</li>
-                            <li>Michael Bolton</li>
-                            <li class="long-name">Samir Nagheenanajar</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Collation
-                        <ul>
-                            <li>Milton Waddams</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Consultants
-                        <ul>
-                            <li>Bob Slydell</li>
-                            <li>Bob Porter</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>*@
+        
     </li>
 </ul>
 
-<table class="table">
+
+<hr />
+<table class="table table-striped" id="dtable">
+    <thead>
         <tr>
 
             <th>
@@ -109,46 +89,57 @@
             </th>
             <th></th>
         </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="@(item.show?"":"grey")">
 
-    @foreach (var item in Model) {
-        <tr>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.parent_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.org_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.org_type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.org_level)
-            </td>
-            <td>
-                <a href="@Url.Action("EditOrganizationStructure", new { id = item.id })"><span class="fa fa-edit"></span></a> |
-                <a href="@Url.Action("DeleteOrganizationStructure", new { id = item.id })"><span class="fa fa-trash"></span></a>
-            </td>
-        </tr>
-    }
-
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.parent_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.org_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.org_type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.org_level)
+                </td>
+                <td>
+                    <a href="@Url.Action("EditOrganizationStructure", new { id = item.id })"><span class="fa fa-edit"></span></a> |
+                    <a href="@Url.Action("DeleteOrganizationStructure", new { id = item.id })"><span class="fa fa-trash"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
     </table>
 
 @section scripts {
-    @Scripts.Render("~/bundles/orgchart")
+<script type="text/javascript" src="@Url.Content("~/Scripts/datatables.js")"></script>
+    @Scripts.Render("~/bundles/orgchart-caprica")
+@*@Scripts.Render("~/bundles/orgchart-sho")*@
     <script>
         $(document).ready(function () {
-            $("#basic-chart-source").orgChart(
+
+                        $('#dtable').DataTable({
+                            "pageLength": 50,
+                            "order": [[0, "asc"]]
+                        });
+          
+
+
+
+            $("#data").orgChart(
                 { container: $("#chart"),
 
                 interactive: true,
                 showLevels: 2
-                }
-
-                );
+                });
         });
     </script>
 }

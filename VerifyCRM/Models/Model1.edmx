@@ -87,6 +87,7 @@
           <Property Name="org_type" Type="nvarchar" MaxLength="20" />
           <Property Name="org_level" Type="smallint" Nullable="false" />
           <Property Name="show" Type="bit" Nullable="false" />
+          <Property Name="org_code" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="app_package">
           <Key>
@@ -1440,7 +1441,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="IsLastRun" Type="int" />
           <Property Name="Status" Type="varchar" MaxLength="42" />
         </EntityType>
-        <Association Name="FK__app_colum__table__2B0A656D">
+        <Association Name="FK__app_colum__table__0682EC34">
           <End Role="app_table" Type="Self.app_table" Multiplicity="1" />
           <End Role="app_column" Type="Self.app_column" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2604,7 +2605,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
     [TodayRunView].[Status] AS [Status]
     FROM [dbo].[TodayRunView] AS [TodayRunView]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__app_colum__table__2B0A656D" Association="Self.FK__app_colum__table__2B0A656D">
+          <AssociationSet Name="FK__app_colum__table__0682EC34" Association="Self.FK__app_colum__table__0682EC34">
             <End Role="app_table" EntitySet="app_table" />
             <End Role="app_column" EntitySet="app_column" />
           </AssociationSet>
@@ -4081,6 +4082,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <Property Name="org_type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="org_level" Type="Int16" Nullable="false" />
           <Property Name="show" Type="Boolean" Nullable="false" />
+          <Property Name="org_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -5432,6 +5434,7 @@ warning 6002: The table/view 'VrpCrmIntegration.dbo.TodayRunView' does not have 
           <EntitySetMapping Name="app_organization_structure">
             <EntityTypeMapping TypeName="VrpCrmIntegrationModel.app_organization_structure">
               <MappingFragment StoreEntitySet="app_organization_structure">
+                <ScalarProperty Name="org_code" ColumnName="org_code" />
                 <ScalarProperty Name="show" ColumnName="show" />
                 <ScalarProperty Name="org_level" ColumnName="org_level" />
                 <ScalarProperty Name="org_type" ColumnName="org_type" />

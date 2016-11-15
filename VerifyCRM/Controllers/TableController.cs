@@ -27,7 +27,7 @@ namespace VerifyCRM.Controllers
 
         public ActionResult OrganizationStructure()
         {
-            return View(db.app_organization_structure.Where(x=>x.show).ToList());
+            return View(db.app_organization_structure.ToList());
         }
 
 
@@ -174,6 +174,8 @@ namespace VerifyCRM.Controllers
         // GET: app_organization_structure/Create
         public ActionResult CreateOrganizationStructure()
         {
+
+            ViewBag.org_type= new SelectList(db.app_option.Where(x=>x.field=="org_type"), "value", "name"); 
             return View();
         }
 
@@ -182,15 +184,15 @@ namespace VerifyCRM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateOrganizationStructure([Bind(Include = "id,parent_id,org_name,org_type,org_level,show")] app_organization_structure app_organization_structure)
+        public ActionResult CreateOrganizationStructure([Bind(Include = "id,parent_id,org_name,org_type,org_level,show,org_code")] app_organization_structure app_organization_structure)
         {
             if (ModelState.IsValid)
             {
                 db.app_organization_structure.Add(app_organization_structure);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("OrganizationStructure");
             }
-
+            ViewBag.org_type = new SelectList(db.app_option.Where(x => x.field == "org_type"), "value", "name"); 
             return View(app_organization_structure);
         }
 
@@ -206,6 +208,7 @@ namespace VerifyCRM.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.org_type = new SelectList(db.app_option.Where(x => x.field == "org_type"), "value", "name",app_organization_structure.org_type); 
             return View(app_organization_structure);
         }
 
@@ -214,14 +217,15 @@ namespace VerifyCRM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditOrganizationStructure([Bind(Include = "id,parent_id,org_name,org_type,org_level,show")] app_organization_structure app_organization_structure)
+        public ActionResult EditOrganizationStructure([Bind(Include = "id,parent_id,org_name,org_type,org_level,show,org_code")] app_organization_structure app_organization_structure)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(app_organization_structure).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("OrganizationStructure");
             }
+            ViewBag.org_type = new SelectList(db.app_option.Where(x => x.field == "org_type"), "value", "name", app_organization_structure.org_type); 
             return View(app_organization_structure);
         }
 
@@ -248,7 +252,7 @@ namespace VerifyCRM.Controllers
             app_organization_structure app_organization_structure = db.app_organization_structure.Find(id);
             db.app_organization_structure.Remove(app_organization_structure);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("OrganizationStructure");
         }
 
         #endregion

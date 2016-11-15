@@ -191,6 +191,7 @@
     <Build Include="dbo\Tables\core_monthly_alert.sql" />
     <Build Include="dbo\Tables\app_organization_structure.sql" />
     <Build Include="dbo\Functions\SplitString.sql" />
+    <Build Include="dbo\Tables\app_crm_user.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\insert scripts\app_option_inserts.sql" />

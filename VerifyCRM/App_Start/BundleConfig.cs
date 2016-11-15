@@ -35,6 +35,13 @@ namespace VerifyCRM
                       "~/Scripts/jquery.orgchart.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/bundles/orgchart-caprica").Include(
+                      "~/Scripts/jquery.orgchart.caprica.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/orgchart-sho").Include(
+                "~/Scripts/orgchart.sho.js"
+          ));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -42,7 +49,9 @@ namespace VerifyCRM
                       "~/Content/font-awesome.css",
                       "~/Content/datatables.css",
                             "~/Content/select2.css",
-                            "~/Content/jquery.orgchart.css",
+                            //"~/Content/jquery.orgchart.css",
+                            "~/Content/jquery.orgchart.caprica.css",
+                            //"~/Content/orgchart.sho.css",
                       "~/Content/site.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,

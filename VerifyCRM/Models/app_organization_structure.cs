@@ -20,5 +20,6 @@ namespace VerifyCRM.Models
         public string org_type { get; set; }
         public short org_level { get; set; }
         public bool show { get; set; }
+        public string org_code { get; set; }
     }
 }

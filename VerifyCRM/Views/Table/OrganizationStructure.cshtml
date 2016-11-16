@@ -7,6 +7,16 @@
 
 <h2>Organization Structure</h2>
 
+<style>
+    #chart{
+margin-left:-20%;
+    width: 140%;
+
+    overflow-x: auto;
+    white-space: nowrap;
+}
+</style>
+
 <ol class="breadcrumb">
     <li><a href="@Url.Action("RunHistory","Monitoring")">Home</a></li>
     <li class="active">Organization Structure</li>
@@ -44,7 +54,20 @@
                                                     <ul>
                                                         @foreach (var l5 in structure.Where(x => x.parent_id == l4.id))
                                                         {
-                                                            <li class="@l5.org_type">@l5.id.@Html.Raw(l5.org_name)  </li>
+                                                            <li class="@l5.org_type">@l5.id.@Html.Raw(l5.org_name)  
+                                                        
+                                                        <ul>
+                                                                 @foreach (var l6 in structure.Where(x => x.parent_id == l5.id))
+                                                                {
+                                                                   <li class="@l6.org_type">
+                                                                     @l6.id.@Html.Raw(l6.org_name)
+                                                                   </li>
+                                                                     
+                                                                }
+
+                                                            </ul>
+                                                        
+                                                        </li>
                                                         }
                                                     </ul>
                                                 </li>

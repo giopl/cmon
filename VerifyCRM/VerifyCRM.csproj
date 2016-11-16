@@ -262,6 +262,7 @@
     </Compile>
     <Compile Include="Models\Meta\app_crm_fieldMeta.cs" />
     <Compile Include="Models\Meta\app_fieldMeta.cs" />
+    <Compile Include="Models\Meta\app_organization_structureMeta.cs" />
     <Compile Include="Models\Meta\app_packageMeta.cs" />
     <Compile Include="Models\Meta\app_package_tableMeta.cs" />
     <Compile Include="Models\Meta\app_tableMeta.cs" />
@@ -360,6 +361,7 @@
     <Content Include="Helpers\app_test.zip" />
     <Content Include="Helpers\7. Data Concurrency.zip" />
     <Content Include="Helpers\DB2-answers.zip" />
+    <Content Include="Helpers\scripts.zip" />
     <None Include="Properties\PublishProfiles\Dwh-appsdev.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\datatables.js" />

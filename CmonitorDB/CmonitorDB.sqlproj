@@ -192,6 +192,9 @@
     <Build Include="dbo\Tables\app_organization_structure.sql" />
     <Build Include="dbo\Functions\SplitString.sql" />
     <Build Include="dbo\Tables\app_crm_user.sql" />
+    <Build Include="dbo\Tables\appopt_crm_users.sql" />
+    <Build Include="dbo\Tables\appopt_business_unit_hierarchy.sql" />
+    <Build Include="dbo\Stored Procedures\app_update_organization_and_users.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\insert scripts\app_option_inserts.sql" />

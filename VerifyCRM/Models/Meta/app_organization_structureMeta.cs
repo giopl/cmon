@@ -24,6 +24,61 @@ namespace VerifyCRM.Models
     public partial class app_organization_structure
     {
 
-       
+
+        public string firstname
+        {
+            get
+            {
+                return GetSplitItem(0);
+            }
+        }
+
+        public string lastname
+        {
+            get
+            {
+                return GetSplitItem(1);
+            }
+        }
+
+
+        public string title
+        {
+            get
+            {
+                return GetSplitItem(2);
+            }
+        }
+
+
+        public string fullname
+        {
+            get
+            {
+                return string.Concat(GetSplitItem(0), " ", GetSplitItem(1));
+            }
+        }
+
+   
+        private string GetSplitItem(int index)
+        {
+
+            //0 firstname, 1 lastname, 2 title, 3 userid
+            //Laura|Jude|Customer Service Representative|MCB\laujud
+            var result = string.Empty;
+            if (org_type == "user" && !string.IsNullOrWhiteSpace(org_name))
+            {
+
+                string[] item = org_name.Split('|');
+
+                result = item[index];
+
+            }
+            return result;
+        }
+
     }
+
+
+
 }

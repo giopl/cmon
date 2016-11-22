@@ -328,8 +328,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Helpers\notes.txt" />
-    <Content Include="Helpers\package.txt" />
+    <Content Include="notes\notes.txt" />
+    <Content Include="notes\package.txt" />
     <Content Include="Images\orgchart.minus.png" />
     <Content Include="Images\orgchart.plus.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -356,12 +356,9 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="Helpers\backupdata.zip" />
-    <Content Include="Helpers\backup2.zip" />
-    <Content Include="Helpers\app_test.zip" />
-    <Content Include="Helpers\7. Data Concurrency.zip" />
-    <Content Include="Helpers\DB2-answers.zip" />
-    <Content Include="Helpers\scripts.zip" />
+    <Content Include="notes\scripts.zip" />
+    <Content Include="notes\70486\Exam.Ref.70-486.Developing.ASP.NET.MVC.4.Web.Applications.pdf.zip" />
+    <Content Include="notes\70486\Professional ASP.NET MVC 5.pdf.zip" />
     <None Include="Properties\PublishProfiles\Dwh-appsdev.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\datatables.js" />

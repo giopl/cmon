@@ -125,7 +125,16 @@ margin-left:-20%;
                     @Html.DisplayFor(modelItem => item.parent_id)
                 </td>
                 <td>
+                    @if(item.org_type=="user")
+                    {
+                        @item.fullname <i>@item.title</i>
+                        
+                                           
+                    }
+                    else { 
                     @Html.DisplayFor(modelItem => item.org_name)
+                    
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.org_type)

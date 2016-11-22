@@ -1,0 +1,50 @@
+﻿https://github.com/caprica/jquery-orgchart
+
+
+update app_organization_structure set parent_id = 19 where id in (134,135)
+
+
+
+select org_name, CHARINDEX('(',org_name,0)-1, CHARINDEX(')',org_name,0), --,left(org_name,CHARINDEX('(',org_name,0)),
+case when substring(org_name,0,CHARINDEX('(',org_name,0)) = '' then org_name else substring(org_name,0,CHARINDEX('(',org_name,0)) end,
+case when substring(org_name,0,CHARINDEX('(',org_name,0)) = '' then '' else SUBSTRING(org_name,CHARINDEX('(',org_name,0)+1,len(org_name) - CHARINDEX('(',org_name,0)-1) end
+from app_organization_structure
+
+
+
+
+
+
+select * from CRM_MSCRM.[dbo].[SystemUser]
+
+select * from app_organization_structure
+
+select DomainName, title, BusinessUnitIdName, firstname, lastname, fullname into vrpCrmIntegration.dbo.app_crm_user from CRM_MSCRM.[dbo].[SystemUser]
+
+select * from dbo.app_crm_user
+
+alter table dbo.app_crm_user  add bu_code varchar(30)
+
+
+
+select BusinessUnitIdName, CHARINDEX('(',BusinessUnitIdName,0)-1, CHARINDEX(')',BusinessUnitIdName,0), --,left(org_name,CHARINDEX('(',org_name,0)),
+case when substring(BusinessUnitIdName,0,CHARINDEX('(',BusinessUnitIdName,0)) = '' then BusinessUnitIdName else substring(BusinessUnitIdName,0,CHARINDEX('(',BusinessUnitIdName,0)) end as orgname,
+case when substring(BusinessUnitIdName,0,CHARINDEX('(',BusinessUnitIdName,0)) = '' then '' else SUBSTRING(BusinessUnitIdName,CHARINDEX('(',BusinessUnitIdName,0)+1,len(BusinessUnitIdName) - CHARINDEX('(',BusinessUnitIdName,0)-1) end as bu_code
+from dbo.app_crm_user
+
+update app_crm_user set bu_code = case when substring(BusinessUnitIdName,0,CHARINDEX('(',BusinessUnitIdName,0)) = '' then '' else SUBSTRING(BusinessUnitIdName,CHARINDEX('(',BusinessUnitIdName,0)+1,len(BusinessUnitIdName) - CHARINDEX('(',BusinessUnitIdName,0)-1) end
+
+select * from app_organization_structure
+where org_code =''
+
+
+update  app_organization_structure set org_code =  cast(1000000+id as varchar(10)) where org_code =''
+
+insert into app_organization_structure (parent_id, org_name, org_type, org_level, show, org_code) 
+select  aos.id, acu.firstname+'-'+acu.lastname + '-'+coalesce(acu.title,'')+'-'+acu.DomainName, 'User' as org_type, aos.org_level+1, 1 as show, 'U-'+org_code 
+
+from app_crm_user acu
+inner join app_organization_structure aos
+on acu.bu_code = aos.org_code
+--where acu.firstname is not null and acu.lastname is not null
+order by len(acu.firstname+'-'+acu.lastname + '-'+coalesce(acu.title,'')+'-'+acu.DomainName)  desc

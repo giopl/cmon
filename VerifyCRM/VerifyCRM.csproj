@@ -359,6 +359,8 @@
     <Content Include="notes\scripts.zip" />
     <Content Include="notes\70486\Exam.Ref.70-486.Developing.ASP.NET.MVC.4.Web.Applications.pdf.zip" />
     <Content Include="notes\70486\Professional ASP.NET MVC 5.pdf.zip" />
+    <Content Include="notes\70486\OD_Changes-486.pdf" />
+    <Content Include="notes\70486\Skills measured.docx" />
     <None Include="Properties\PublishProfiles\Dwh-appsdev.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\datatables.js" />

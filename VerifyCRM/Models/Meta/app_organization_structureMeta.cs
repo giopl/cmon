@@ -42,6 +42,7 @@ namespace VerifyCRM.Models
         }
 
 
+
         public string title
         {
             get
@@ -49,6 +50,15 @@ namespace VerifyCRM.Models
                 return GetSplitItem(2);
             }
         }
+
+        public string businessUnit
+        {
+            get
+            {
+                return GetSplitItem(3);
+            }
+        }
+
 
 
         public string fullname

@@ -294,6 +294,9 @@ namespace VerifyCRM.Controllers
         // GET: Test/Delete/5
         public ActionResult DeletePackageTable(int id)
         {
+            
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

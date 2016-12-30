@@ -4,7 +4,7 @@
     ViewBag.Title = "Last Run";
 
     var isRunning = Model.Where(x => x.statusCode < 3).Count() > 1;
-    var startedOn = Model.Min(x => x.StartedOn);
+    var startedOn = Model.Where(x => x.levelIdInt != 35).Min(x => x.StartedOn);
     var completedOn = Model.Max(x => x.CompletedOn);
     
     

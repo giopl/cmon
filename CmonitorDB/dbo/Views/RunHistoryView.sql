@@ -7,5 +7,5 @@ CREATE View [dbo].[RunHistoryView] as
   
    from [dbo].[MonitoringView]
    where CompletedOn is not null
-   and levelId <> 42
+   and levelId not in( 42, 35)
   group by cast(startedOn as date)
